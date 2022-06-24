@@ -1,26 +1,16 @@
 # Dados Livres: plataforma livre de dados abertos
 
-A ideia de desenvolver o Dados Livres surgiu em 2018, mas o seu desenvolvimento
-iniciou em 2019 como um projeto de pesquisa no IFRN. Assim, o projeto foi
-idealizado e desenvolvido pela estudante
-[Carolina Soares](https://gitlab.com/mariacarolinass) e orientado pelo professor
-[Pedro Baesse](https://gitlab.com/pbaesse).
+O Dados Livres é uma plataforma, sem fins lucrativos, para catalogação de fontes de dados abertos e aplicações cívicas por meio de colaboração coletiva. Um dos objetivos do projeto é criar um ambiente que facilite a atuação do público no controle social e na difusão dos dados abertos para os mais diversos fins. 
 
-O Dados Livres é um ambiente web para catalogação de fontes de dados abertos
-e aplicações cívicas por meio de colaboração coletiva. Além disso, o código do
-projeto está disponibilizado no GitLab para contribuições gerais com o seu
-software livre.
+A ideia de desenvolver a plataforma surgiu em 2018, como um projeto de pesquisa no Instituto Federal de Ciência e Tecnologia do Rio Grande do Norte (IFRN), mantido e fundado pela [Carolina Soares](https://gitlab.com/mariacarolinass) e por [Pedro Baesse](https://gitlab.com/pbaesse). Além disso, o Dados Livres é disponibilizado como software livre, sob a [licença GNU GPLv3](https://gitlab.com/dados-livres/dados-livres/-/blob/master/LICENSE) e o seu código-fonte disponível aqui no [GitLab](https://gitlab.com/dados-livres/dados-livres/). 
 
-Alguns diferenciais do projeto é a praticidade, pois suas fontes e aplicações
-são facilmente cadastradas na plataforma sem exigir nenhum conhecimento de
-código. Outro diferencial é a ligação de fontes de dados abertos com as
-aplicações cívicas, na sua página de perfil, e vice-versa.
+Alguns diferenciais do Dados Livres é a praticidade, pois suas fontes e aplicações são facilmente cadastradas na plataforma sem exigir nenhum conhecimento de código dos seus usuários. Outro diferencial é a ligação de fontes de dados abertos com as aplicações cívicas na sua página de perfil e vice-versa. Entre os planejamentos futuros do projeto é pretenso permitir cadastrar artigos científicos e notícias que utilizam de dados abertos.
 
-Entre os planejamentos futuros do projeto é pretendido permitir cadastrar
-artigos científicos e notícias que utilizam de dados abertos. Por fim, será
-esperado que o Dados Livres possa criar um ambiente que facilite a
-participação da população no controle social e difusão de dados abertos
-para os mais diversos fins.
+A plataforma foi desenvolvida com a linguagem de programação Python juntamente ao microframework web Flask.
+
+**Visite o nosso site: [dadoslivres.org](https://dadoslivres.org/)**
+
+**[Saiba mais sobre o Dados Livres aqui](https://dadoslivres.org/about)**
 
 # Problemas conhecidos e possíveis melhorias
 
