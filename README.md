@@ -87,7 +87,7 @@ Acesse no seu navegador o seguinte endereço abaixo:
 http://localhost:5000/
 ```
 
-Para contribuir com o projeto use:
+### Para contribuir com o projeto use:
 
 ```sh
 $ git checkout -b "nome_da_branch"
