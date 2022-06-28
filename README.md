@@ -87,7 +87,7 @@ Acesse no seu navegador o seguinte endereço abaixo:
 http://localhost:5000/
 ```
 
-### Para contribuir com o projeto use:
+### Para contribuir use:
 
 ```sh
 $ git checkout -b "nome_da_branch"
@@ -125,3 +125,4 @@ Mantedores do projeto:
 - [Twitter](https://twitter.com/dadoslivres)
 - [Facebook](https://www.facebook.com/dadoslivres)
 
+![Logo Dados Livres](/dadoslivres-logo.png)
