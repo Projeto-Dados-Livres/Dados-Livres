@@ -23,20 +23,20 @@ Sumário
 
 ## Como contribuir
 
-**1. Cadastro de fontes e aplicações**
+1. **Cadastro de fontes e aplicações**
 
-Você pode contribuir com o projeto ajudando no cadastro de fontes de dados abertos ou aplicações cívicas.
+    Você pode contribuir com o projeto ajudando no cadastro de fontes de dados abertos ou aplicações cívicas.
 
-Primeiramente é preciso realizar um [login](https://dadoslivres.org/auth/login) na plataforma ou caso ainda não seja um usuário cadastrado, se [cadastrar](https://dadoslivres.org/auth/register_request) no Dados Livres. Depois, preencher o forumário de cadastro da [fonte](https://dadoslivres.org/register_source) ou [aplicação](https://dadoslivres.org/register_software) que tenha escolhido.
+    Primeiramente é preciso realizar um [login](https://dadoslivres.org/auth/login) na plataforma ou caso ainda não seja um usuário cadastrado, se [cadastrar](https://dadoslivres.org/auth/register_request) no Dados Livres. Depois, preencher o forumário de cadastro da [fonte](https://dadoslivres.org/register_source) ou [aplicação](https://dadoslivres.org/register_software) que tenha escolhido.
 
-**2. Código-fonte**
+2. **Código-fonte**
 
-As atualizações, sugestões ou dúvidas para contribuir com o código-fonte do projeto são aceitas no [repositório do Dados Livres no GitLab](https://gitlab.com/dados-livres/dados-livres).
+    As atualizações, sugestões ou dúvidas para contribuir com o código-fonte do projeto são aceitas no [repositório do Dados Livres no GitLab](https://gitlab.com/dados-livres/dados-livres).
 
-**3. Saiba mais como contribuir**
+3. **Saiba mais como contribuir**
 
-- [Página de como contribuir na plataforma](https://dadoslivres.org/how_to_contribute)
-- [Ideias de contribuição no quadro de tópicos do GitLab](https://gitlab.com/dados-livres/dados-livres/-/boards)
+    - [Página de como contribuir na plataforma](https://dadoslivres.org/how_to_contribute)
+    - [Ideias de contribuição no quadro de tópicos do GitLab](https://gitlab.com/dados-livres/dados-livres/-/boards)
 
 ## Como instalar
 
