@@ -10,8 +10,8 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 
 **Visite o nosso site: [dadoslivres.org](https://dadoslivres.org/)** | **[Saiba mais sobre o Dados Livres aqui](https://dadoslivres.org/about)**
 
-Sumário
-=================
+## Sumário
+
 * [Como contribuir](#como-contribuir)
 * [Como instalar](#como-instalar)
     * [Configurando o projeto](#configurando-o-projeto)
