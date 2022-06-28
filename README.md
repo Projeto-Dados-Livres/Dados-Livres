@@ -1,6 +1,6 @@
-# Dados Livres: plataforma livre de dados abertos
+# Dados Livres - Plataforma livre de dados abertos
 
-O Dados Livres é uma plataforma, sem fins lucrativos, para catalogação de fontes de dados abertos e aplicações cívicas por meio de colaboração coletiva. Um dos objetivos do projeto é criar um ambiente que facilite a atuação do público no controle social e na difusão dos dados abertos para os mais diversos fins.
+O **Dados Livres** é uma plataforma, sem fins lucrativos, para catalogação de fontes de dados abertos e aplicações cívicas por meio de colaboração coletiva. Um dos objetivos do projeto é criar um ambiente que facilite a atuação do público no controle social e na difusão dos dados abertos para os mais diversos fins.
 
 A ideia de desenvolver a plataforma surgiu em 2018, como um projeto de pesquisa no Instituto Federal de Ciência e Tecnologia do Rio Grande do Norte (IFRN), mantido e fundado pela [Carolina Soares](https://gitlab.com/mariacarolinass) e por [Pedro Baesse](https://gitlab.com/pbaesse). Além disso, o Dados Livres é disponibilizado como software livre, sob a [licença GNU GPLv3](https://gitlab.com/dados-livres/dados-livres/-/blob/master/LICENSE) e o seu código-fonte disponível aqui no [GitLab](https://gitlab.com/dados-livres/dados-livres/).
 
@@ -8,9 +8,18 @@ Alguns diferenciais do Dados Livres é a praticidade, pois suas fontes de dados 
 
 A plataforma foi desenvolvida com a linguagem de programação Python juntamente ao Microframework Web Flask.
 
-**Visite o nosso site: [dadoslivres.org](https://dadoslivres.org/)**
+**Visite o nosso site: [dadoslivres.org](https://dadoslivres.org/)** | **[Saiba mais sobre o Dados Livres aqui](https://dadoslivres.org/about)**
 
-**[Saiba mais sobre o Dados Livres aqui](https://dadoslivres.org/about)**
+Sumário
+=================
+* [Como contribuir](#como-contribuir)
+* [Como instalar](#como-instalar)
+    * [Configurando o projeto](#configurando-o-projeto)
+    * [Para contribuir com Git](#para-contribuir-com-git)
+* [Lista de autores](#lista-de-autores)
+* [Licença](#licença)
+* [Contato](#contato)
+* [Redes sociais](#redes-sociais)
 
 ## Como contribuir
 
@@ -87,7 +96,7 @@ Acesse no seu navegador o seguinte endereço abaixo:
 http://localhost:5000/
 ```
 
-### Para contribuir use:
+### Para contribuir com Git:
 
 ```sh
 $ git checkout -b "nome_da_branch"
