@@ -5,24 +5,46 @@
   <div class="row">
     <div class="col-md-12 text-justify">
       <h1 class="text-center">{{_('Sobre')}}</h1><br><br>
-      <p>É com muita satisfação e carinho que o Dados Livres foi lançado,
-        no dia 1 de novembro de 2019, em versão BETA.</p> <br>
-      <p>* Sugira melhorias para o projeto na <a href="{{ url_for('main.contact') }}"
-        id="color-red">página de contato</a> ou no
-        <a href="https://t.me/dadoslivres" id="color-red" target="_blank">grupo do Telegram</a>.</p>
-      <p>* Confira a página de <a href="{{ url_for('main.how_to_contribute') }}"
-        id="color-red">como contribuir com o projeto</a>.</p><br>
-      <h3>Dados Livres: plataforma livre de dados abertos</h3><br><br>
-      <p>A ideia de desenvolver a plataforma (Dados Livres) surgiu em 2018,
-        quando foi identificado a importância de visualizar informações e
-        tecnologias que usam os dados abertos. O Dados Livres é uma plataforma
-        livre que permite a catalogação de fontes de dados abertos e aplicações
-        cívicas por meio de colaboração coletiva. O projeto é mantido pela
-        estudante e pesquisadora Carolina Soares, orientado pelo Prof. Me.
-        Pedro Baesse e originalmente desenvolvido no IFRN - campus Ceará-Mirim.</p><br>
+      <h2>Dados Livres: plataforma livre de dados abertos</h2><br>
+      <p>O Dados Livres é uma plataforma software livre, 
+        sem fins lucrativos, que visa catalogar fontes de dados abertos 
+        e aplicações cívicas por meio de colaboração coletiva.</p>
+      <p>O <a href="https://dadoslivres.org" id="color-red">dadoslivres.org</a> 
+        foi lançado em novembro de 2019 e está em sua versão beta.
+      </p>
     </div>
-  </div>
-
+  </div><br>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/49zMjX-RZxA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div><br><br>
+  <div class="row">
+    <div class="col-md-12 text-justify">
+      <ul>
+        <li><p><a href="{{ url_for('main.contact') }}" id="color-red">Entre em contato conosco</a></p></li>
+        <li><p><a href="https://t.me/dadoslivres" id="color-red" target="_blank">Entre para a comunidade</a></p></li>
+        <li><p><a href="{{ url_for('main.how_to_contribute') }}" id="color-red">Contribua com o projeto</a></li></p>
+      </ul>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-12 text-justify">
+      <h3>Como surgiu e por quem?</h3><br>
+      <p>A ideia de desenvolver o Dados Livres surgiu em 2018, visando criar um 
+        ambiente que facilitasse a visualização das informações e tecnologias 
+        que usam os dados abertos e que, conjuntamente, virasse um lugar colaborativo.</p>
+      <p>O projeto foi originalmente produzido no IFRN - campus Ceará-Mirim, 
+        em um projeto de pesquisa, desenvolvido pela 
+        <a href="https://mariacarolinass.github.io/carolinasoares/" id="color-red" target="_blank">
+          Carolina Soares</a> e orientado pelo <a href="https://www.pbaesse.net/" id="color-red" target="_blank">
+          Pedro Baesse</a>.</p>
+    </div>
+  </div><br>
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-sm-6 col-md-4">
@@ -52,73 +74,39 @@
       </div>
     </div>
     <div class="col-md-2"></div>
-  </div><br><br><br>
-
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/49zMjX-RZxA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="col-md-3"></div>
   </div><br><br>
-
   <div class="row">
-    <div class="col-md-12 text-justify"><br>
-      <p>Existem iniciativas parecidas como o
-        <a href="https://brasil.io/home/" id="color-red" target="_blank">Brasil.io</a>
-        e o <a href="https://colaboradados.com.br/" id="color-red" target="_blank">Colaboradados</a>.
-        Porém, alguns diferenciais do Dados Livres é a facilidade de cadastro.
-        São os próprios usuários da plataforma que cadastram as fontes de dados
-        abertos e as aplicações cívicas sem que haja necessidade de codificação.
-        O Dados Livres facilita o trabalho de jornalistas, desenvolvedores e
-        cidadãos ao simplificar a descoberta, a colaboração ou uso dos dados abertos.</p>
-      <p>Outro diferencial significativo da plataforma, é inovar conectando fontes
-        de dados abertos com as aplicações cívicas. Por exemplo, ao entrar em um
-        perfil de uma aplicação cívica o usuário pode saber quais as fontes de
-        dados abertos que foram utilizadas e vice-versa.</p>
-      <p>Para incentivar também na construção da plataforma o projeto é
-        software livre com o seu código fonte disponível no
-        <a href="https://gitlab.com/dados-livres/dados-livres"
-          id="color-red" target="_blank">GitLab</a> e licenciado sob
-        <a href="https://gitlab.com/dados-livres/dados-livres/-/blob/master/LICENSE"
-          id="color-red" target="_blank">Licença GNU GPLv3</a>. A página de
-        <a href="{{ url_for('main.how_to_contribute') }}" id="color-red">
-          como contribuir</a> detalha algumas possíveis formas de colaborar com a plataforma.</p>
-      <p>Concluindo, é esperado que o Dados Livres possa criar um ambiente que facilite a
-        participação da população no controle social e difusão de dados abertos
+    <div class="col-md-12 text-justify">
+      <h3>Saiba mais</h3><br>
+      <p>Um diferencial do Dados Livres é a facilidade de cadastro, pois são os 
+        próprios usuários da plataforma que cadastram as fontes de dados abertos 
+        e as aplicações cívicas, sem haver necessidade de codificação. Essas fontes 
+        e aplicações facilitam o trabalho de jornalistas, desenvolvedores e cidadãos 
+        ao simplificar a descoberta, a colaboração ou uso dos dados abertos.
+        Outro diferencial significativo, é a conexão das fontes de dados abertos 
+        com as aplicações cívicas. Ao clicar em alguma fonte cadastrada na plataforma será
+        exibido o perfil da respectiva fonte, nessa página o usuário poderá saber quais
+        as aplicações cívicas foram desenvolvidas utilizando tal fonte e vice-versa.</p>
+      <p>É esperado que o Dados Livres possa criar um ambiente que facilite a
+        participação da população no controle social e difusão dos dados abertos
         para os mais diversos fins.</p><br>
-      <p><b>Todos juntos pelo conhecimento livre e programação cívica!</b></p><br>
-      <p><a href="https://youtu.be/NpRSPhvXuYY?t=1128" id="color-red" target="_blank">
-        Saiba o que são dados abertos governamentais e a sua importância para a sociedade civil</a>.</p>
-    </div>
-  </div><br><br><br><br>
-
-  <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-sm-6 col-md-4"><br>
-      <div style="width:350px; display: block; margin: 0 auto; border: 0; text-align: center">
-        <img src="static/image/Logo-Dados-Livres2.png" alt="Logo do Dados Livres" style="width:50%"><br><br>
+      <h3>Assista</h3><br>
+      <p>Entenda a relação dos dados abertos, controle social e Dados Livres 
+        assistindo sobre a 
+        <a href="https://youtu.be/vDrrC0i0MII?t=10883" id="color-red" target="_blank">
+        importância dos dados abertos governamentais e seus aplicativos resultantes</a>.</p>
       </div>
-    </div><div class="col-md-2"></div>
-    <div class="col-md-2"></div>
-    <div class="col-sm-6 col-md-4"><br>
-      <div style="width:350px; display: block; margin: 0 auto; border: 0; text-align: center">
-        <img src="static/image/logo-ifrn-cm.png.png" alt="Logo do IFRN" style="width:50%"><br><br>
-      </div>
-    </div>
-    <div class="col-md-2"></div>
-  </div><br><br>
-
+  </div><br>
   <div class="row">
     <div class="col-md-12 col-sm-8 text-justify">
-      <h3>Locais em que o Dados Livres participou</h3><br>
-      <table class="table table-bordered">
+      <h3>Aonde o Dados Livres esteve</h3><br>
+      <p><a href="https://ethercalc.net/pwf01es2mcrt.html" id="color-red" target="_blank">
+        Clique aqui para ver os eventos que o projeto participou</a>.</p>
+      <!--<table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nome</th>
+            <th scope="col">Evento</th>
             <th scope="col">Lugar</th>
             <th scope="col">Formato</th>
             <th scope="col">Ano</th>
@@ -134,7 +122,7 @@
             <td>Palestra (presencial)</td>
             <td>2019</td>
             <td>-</td>
-            <td><a href="https://brasil.campus-party.org/" id="color-red" target="_blank">link da Campus Party</a></td>
+            <td><a href="https://brasil.campus-party.org/" id="color-red" target="_blank">Campus Party</a></td>
           </tr>
           <tr>
             <th scope="row">2</th>
@@ -143,8 +131,8 @@
             <td>Exposição (presencial)</td>
             <td>2019</td>
             <td>3° lugar na área de ciências sociais e credenciamento para a
-              Mostra Científica de Inovação, Tecnologia e Engenharia - MOCITEPIAL em Alagoas</td>
-            <td><a href="https://doity.com.br/mociteczn" id="color-red" target="_blank">link da MOCITECZN</a></td>
+              Mostra Científica de Inovação, Tecnologia e Engenharia - MOCITEPIAL (Arapiraca, Alagoas)</td>
+            <td><a href="https://doity.com.br/mociteczn" id="color-red" target="_blank">MOCITECZN</a></td>
           </tr>
           <tr>
             <th scope="row">3</th>
@@ -152,17 +140,19 @@
             <td>Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) - Campus Cajazeiras</td>
             <td>Apresentação de Artigo (online)</td>
             <td>2020</td>
-            <td>Publicação no "Anais SertãoComp"</td>
-            <td><a href="http://sertaocomp.info/" id="color-red" target="_blank">link do SertãoComp</a></td>
+            <td>Publicação no 
+              <a href="http://editora.ifpb.edu.br/index.php/ifpb/catalog/book/407" id="color-red" target="_blank">
+              "Anais do SertãoComp"</a> pág. 32</td>
+            <td><a href="http://sertaocomp.info/" id="color-red" target="_blank">SertãoComp</a></td>
           </tr>
           <tr>
             <th scope="row">4</th>
             <td>Sprint: Dados Livres - Python Brasil</td>
             <td>Brasil</td>
-            <td>Reunião de pessoas (online)</td>
+            <td>Reunião (online)</td>
             <td>2020</td>
             <td>-</td>
-            <td><a href="https://2020.pythonbrasil.org.br/" id="color-red" target="_blank">link da Python Brasil</a></td>
+            <td><a href="https://2020.pythonbrasil.org.br/" id="color-red" target="_blank">Python Brasil</a></td>
           </tr>
           <tr>
             <th scope="row">5</th>
@@ -170,8 +160,9 @@
             <td>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte (IFRN)</td>
             <td>Exposição (online)</td>
             <td>2020</td>
-            <td>Publicação do artigo pela Editora IFRN</td>
-            <td><a href="https://eventos.ifrn.edu.br/8mostratecnologica/" id="color-red" target="_blank">link da Mostra Tecnológica</a></td>
+            <td>-</td>
+            <td><a href="https://eventos.ifrn.edu.br/8mostratecnologica/" id="color-red" target="_blank">
+              Mostra Tecnológica</a></td>
           </tr>
           <tr>
             <th scope="row">6</th>
@@ -179,11 +170,58 @@
             <td>Universidade de São Paulo (USP)</td>
             <td>Exposição (online)</td>
             <td>2021</td>
+            <td>Publicação <a href="https://issuu.com/febrace/docs/anais_febrace2021_v4/255" id="color-red" target="_blank">
+              Anais FEBRACE</a></td>
+            <td><a href="https://febrace.org.br/" id="color-red" target="_blank">FEBRACE</a></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Python Nordeste</td>
+            <td>Nordeste, Brasil</td>
+            <td>Palestra (online)</td>
+            <td>2021</td>
             <td>-</td>
-            <td><a href="https://febrace.org.br/" id="color-red" target="_blank">link da FEBRACE</a></td>
+            <td><a href="https://2020.pythonnordeste.org/" id="color-red" target="_blank">PYNE</a></td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Muvuca Hack Festival</td>
+            <td>Matehackers</td>
+            <td>Palestra (online)</td>
+            <td>2021</td>
+            <td>-</td>
+            <td><a href="https://muvuca.matehackers.org/" id="color-red" target="_blank">Muvuca</a></td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>FLISol Natal</td>
+            <td>Sebrae, Natal (RN)</td>
+            <td>Palestra (presencial)</td>
+            <td>2022</td>
+            <td>-</td>
+            <td><a href="https://flisol.potilivre.org/" id="color-red" target="_blank">FliSol</a></td>
           </tr>
         </tbody>
-      </table>
+      </table>-->
     </div>
+  </div><br>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Todos juntos pelo conhecimento livre e programação cívica!</h3>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-sm-6 col-md-4"><br><br><br>
+      <div style="width:350px; display: block; margin: 0 auto; border: 0; text-align: center">
+        <img src="static/image/Logo-Dados-Livres2.png" alt="Logo do Dados Livres" style="width:50%"><br><br>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
+    <div class="col-sm-6 col-md-4"><br><br><br>
+      <div style="width:350px; display: block; margin: 0 auto; border: 0; text-align: center">
+        <img src="static/image/logo-ifrn-cm.png.png" alt="Logo do IFRN" style="width:50%"><br><br>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
   </div><br><br>
 {% endblock %}
