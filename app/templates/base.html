@@ -43,6 +43,7 @@
             <li><a href="{{ url_for('main.about') }}" id="navbar">{{ _('Sobre') }}</a></li>
             <li><a href="{{ url_for('main.how_to_contribute') }}" id="navbar">{{ _('Como Contribuir?') }}</a></li>
             <li><a href="{{ url_for('main.contact') }}" id="navbar">{{ _('Contato') }}</a></li>
+            <li><a href="{{ url_for('main.common_questions') }}" id="navbar">{{ _('Perguntas Frequentes') }}</a></li>
             {% if current_user.is_anonymous %}
               <li><a href="{{ url_for('auth.login') }}" id="navbar">{{ _('Entrar') }}</a></li>
             {% else %}
