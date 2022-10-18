@@ -45,49 +45,69 @@ Primeiro faça um fork do projeto!
 Em seguida clone o repositório que você fez o fork:
 
 ```sh
-$ git clone https://gitlab.com/seu-usuario/dados-livres
-$ cd dados-livres
+git clone https://gitlab.com/seu-usuario/dados-livres
+```
+
+Para entrar no repositório:
+
+```sh
+cd dados-livres
 ```
 
 Instale o ambiente virtual venv:
 
 ```sh
-$ sudo apt-get install python3-venv
+sudo apt-get install python3-venv
 ```
 
 Utilize o comando abaixo para criar o ambiente virtual de nome venv:
 
 ```sh
-$ python3 -m venv venv
+python3 -m venv venv
 ```
 
-Para entrar no ambiente virtual:
+Para entrar no ambiente virtual utilizando Linux:
 
 ```sh
-$ source venv/bin/activate       (Linux)
-$ source venv\Script\activate    (Windows)
+source venv/bin/activate
 ```
 
-Agora, instale a lista de bibliotecas no arquivo requirements.txt:
+Para entrar no ambiente virtual utilizando Windows:
 
 ```sh
-$ pip install -r requirements.txt
+source venv\Script\activate
+```
+
+Agora, instale todas as dependências do projeto salvas no arquivo requirements.txt:
+
+```sh
+pip install -r requirements.txt
 ```
 
 ### Configurando o projeto
 
-Inicie o banco de dados:
+Crie o banco de dados:
 
 ```sh
-$ flask db init
-$ flask db migrate -m "criando banco de dados"
-$ flask db upgrade
+flask db init
+```
+
+Salve a versão criada do banco de dados:
+
+```sh
+flask db migrate -m "subindo banco de dados"
+```
+
+Atualize o banco de dados:
+
+```sh
+flask db upgrade
 ```
 
 Para rodar a aplicação utilize o comando:
 
 ```sh
-$ flask run
+flask run
 ```
 
 Acesse no seu navegador o seguinte endereço abaixo:
@@ -96,13 +116,30 @@ Acesse no seu navegador o seguinte endereço abaixo:
 http://localhost:5000/
 ```
 
-### Para contribuir com Git:
+### Para contribuir utilizando o Git:
+
+Crie uma nova branch para a funcionalidade que irá desenvolver:
 
 ```sh
-$ git checkout -b "nome_da_branch"
-$ git add
-$ git commit
-$ git push
+git checkout -b "nome_da_branch"
+```
+
+Adicione todos os arquivos criados ou editados:
+
+```sh
+git add nome_do_arquivo
+```
+
+Salve os arquivos:
+
+```sh
+git commit -m "descreva o que editou ou criou"
+```
+
+Suba todas as alterações para o GitLab:
+
+```sh
+git push
 ```
 
 ## Lista de autores
