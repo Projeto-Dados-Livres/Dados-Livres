@@ -353,6 +353,10 @@ def ranking():
 def terms():
     return render_template('terms.html', title=(_('Termos e Condições')))
 
+@bp.route('/common_questions', methods=['GET', 'POST'])
+def common_questions():
+    return render_template('common_questions.html', title=(_('Perguntas Frequentes')))
+
 @bp.route('/privacy_policy', methods=['GET', 'POST'])
 def privacy_policy():
     return render_template('privacy_policy.html', title=(_('Política de Privacidade')))
