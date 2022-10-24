@@ -8,7 +8,7 @@ from flask_babel import _, lazy_gettext as _l
 
 class LoginForm(FlaskForm):
     email = StringField(_l('E-mail: *'), validators=[DataRequired(),
-        Email()], render_kw={"placeholder": "Digite seu nome de usuário"})
+        Email()], render_kw={"placeholder": "Digite seu e-mail"})
     senha = PasswordField(_l('Senha: *'), validators=[DataRequired(),
         Length(min=8)], render_kw={"placeholder": "Digite sua senha \
 (mínimo 8 caracteres)"})
@@ -20,9 +20,9 @@ class RegistrationForm(FlaskForm):
     username = StringField(_l('Nome: *'), validators=[Length(min=4, max=40)],
         render_kw={"placeholder": "Digite um nome de usuário"})
     nickname = StringField(_l('Apelido: *'), validators=[DataRequired(),
-        Length(min=4, max=12)], render_kw={"placeholder": "Digite seu @ apelido de usuário"})
+        Length(min=4, max=12)], render_kw={"placeholder": "Digite um apelido de usuário"})
     email = StringField(_l('E-mail: *'), validators=[DataRequired(), Email()],
-        render_kw={"placeholder": "Digite seu endereço de e-mail"})
+        render_kw={"placeholder": "Digite um endereço de e-mail"})
     senha = PasswordField(_l('Senha: *'), validators=[DataRequired(),
         Length(min=8)], render_kw={"placeholder": "Digite uma senha \
 (mínimo 8 caracteres)"})
@@ -33,7 +33,7 @@ class RegistrationForm(FlaskForm):
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
-            raise ValidationError(_('Esse endereço já está cadastrado. Escolha um e-mail diferente'))
+            raise ValidationError(_('Esse e-mail já está cadastrado. Escolha um e-mail diferente'))
 
     def validate_nickname(self, nickname):
         user = User.query.filter_by(nickname=nickname.data).first()
@@ -43,7 +43,7 @@ class RegistrationForm(FlaskForm):
 
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField(_l('E-mail: *'), validators=[DataRequired(), Email()],
-        render_kw={"placeholder": "Digite seu endereço de e-mail"})
+        render_kw={"placeholder": "Digite seu e-mail"})
     submit = SubmitField(_l('Enviar'))
 
 
@@ -54,4 +54,4 @@ class ResetPasswordForm(FlaskForm):
     password2 = PasswordField(_l('Repetir senha: *'), validators=[DataRequired(),
         EqualTo('senha'), Length(min=8)], render_kw={"placeholder":
 "Repita a senha anterior (mínimo 8 caracteres)"})
-    submit = SubmitField(_l('Salvar'))
+    submit = SubmitField(_l('Enviar'))
