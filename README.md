@@ -139,7 +139,7 @@ git commit -m "descreva o que editou ou criou"
 Suba todas as alterações para o GitLab:
 
 ```sh
-git push
+git push --set-upstream origin nome_da_branch
 ```
 
 ## Lista de autores
