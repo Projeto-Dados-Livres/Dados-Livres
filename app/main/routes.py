@@ -363,3 +363,7 @@ def common_questions():
 @bp.route('/privacy_policy', methods=['GET', 'POST'])
 def privacy_policy():
     return render_template('privacy_policy.html', title=(_('Política de Privacidade')))
+
+@bp.route('/about_us_and_contributors', methods=['GET', 'POST'])
+def about_us_and_contributors():
+    return render_template('about_us_and_contributors.html', title=(_('Saiba mais sobre nós e nossos contribuidores')))
