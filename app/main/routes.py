@@ -70,7 +70,8 @@ def register_source():
         source = Source(title=form.title.data, city=form.city.data,
         state=form.state.data, country=form.country.data,
         description=form.description.data, sphere=form.sphere.data,
-        officialLink=form.officialLink.data, author=current_user)
+        officialLink=form.officialLink.data, treatedLink=form.treatedLink.data, 
+        author=current_user)
         db.session.add(source)
         db.session.flush()
         category = Category(category=form.category.data, source_id=source.id)
@@ -117,6 +118,7 @@ def edit_source(id):
         tag.keyword = form.keyword.data
         category.category = form.category.data
         source.officialLink = form.officialLink.data
+        source.treatedLink = form.treatedLink.data
         source.sphere = form.sphere.data
         source.city = form.city.data
         source.state = form.state.data
@@ -135,6 +137,7 @@ def edit_source(id):
     form.keyword.data = tag.keyword
     form.category.data = category.category
     form.officialLink.data = source.officialLink
+    form.treatedLink.data = source.treatedLink
     form.sphere.data = source.sphere
     form.city.data = source.city
     form.state.data = source.state
