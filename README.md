@@ -15,6 +15,7 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 * [Como contribuir](#como-contribuir)
 * [Como instalar](#como-instalar)
     * [Configurando o projeto](#configurando-o-projeto)
+    * [Rodando o projeto](#rodando-o-projeto)
     * [Para contribuir com Git](#para-contribuir-com-git)
 * [Lista de autores](#lista-de-autores)
 * [Licença](#licença)
@@ -40,9 +41,7 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 
 ## Como instalar
 
-Primeiro faça um fork do projeto!
-
-Em seguida clone o repositório que você fez o fork:
+Primeiro faça um fork do projeto! Em seguida clone o repositório que você fez o fork:
 
 ```sh
 git clone https://gitlab.com/seu-usuario/dados-livres
@@ -103,6 +102,8 @@ Atualize o banco de dados:
 ```sh
 flask db upgrade
 ```
+
+### Rodando o projeto
 
 Para rodar a aplicação utilize o comando:
 
