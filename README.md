@@ -16,6 +16,10 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 
 * [Como contribuir](#como-contribuir)
 * [Como instalar](#como-instalar)
+    * [Linux](#linux)
+    * [Mac](#mac)
+    * [Windows](#windows)
+    * [Bibliotecas do projeto](#bibliotecas-do-projeto)
     * [Configurando o projeto](#configurando-o-projeto)
     * [Rodando o projeto](#rodando-o-projeto)
 * [Lista de autores](#lista-de-autores)
@@ -66,6 +70,12 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 
 ## Como instalar
 
+Pré-requisitos:
+
+- [Git](https://git-scm.com/downloads)
+- [Python3](https://www.python.org/downloads/) (Linux já vem instalado)
+- [Pip](https://pip.pypa.io/en/stable/installation/)
+
 Primeiro faça um fork do projeto! Em seguida clone o repositório que você fez o fork:
 
 ```sh
@@ -78,29 +88,63 @@ Para entrar no repositório:
 cd dados-livres
 ```
 
-Instale o ambiente virtual venv:
+### Linux:
 
-```sh
-sudo apt-get install python3-venv
-```
-
-Utilize o comando abaixo para criar o ambiente virtual de nome venv:
+Crie o ambiente virtual venv:
 
 ```sh
 python3 -m venv venv
 ```
 
-Para entrar no ambiente virtual utilizando Linux:
+Caso apareça para instalar o **python3-venv** rode o comando `sudo apt-get install python3-venv` e depois repita `python3 -m venv venv`.
+
+Entre no ambiente virtual:
 
 ```sh
 source venv/bin/activate
 ```
 
-Para entrar no ambiente virtual utilizando Windows:
+### Mac:
+
+Instale o virtualenv:
 
 ```sh
-source venv\Script\activate
+pip install virtualenv
 ```
+
+Crie o ambiente virtual venv:
+
+```sh
+python3 -m venv venv
+```
+
+Entre no ambiente virtual:
+
+```sh
+source venv/bin/activate
+```
+
+### Windows:
+
+Instale o virtualenv:
+
+```sh
+pip install virtualenv
+```
+
+Crie o ambiente virtual venv:
+
+```sh
+python3 -m venv venv
+```
+
+Entre no ambiente virtual:
+
+```sh
+venv\Scripts\activate
+```
+
+### Bibliotecas do projeto 
 
 Agora, instale todas as dependências do projeto salvas no arquivo requirements.txt:
 
