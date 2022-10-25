@@ -18,7 +18,6 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 * [Como instalar](#como-instalar)
     * [Configurando o projeto](#configurando-o-projeto)
     * [Rodando o projeto](#rodando-o-projeto)
-    * [Para contribuir com Git](#para-contribuir-com-git)
 * [Lista de autores](#lista-de-autores)
 * [Licença](#licença)
 * [Contato](#contato)
@@ -28,18 +27,42 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 
 1. **Cadastro de fontes e aplicações**
 
-    Você pode contribuir com o projeto ajudando no cadastro de fontes de dados abertos ou aplicações cívicas.
-
-    Primeiramente é preciso realizar um [login](https://dadoslivres.org/auth/login) na plataforma ou caso ainda não seja um usuário cadastrado, se [cadastrar](https://dadoslivres.org/auth/register_request) no Dados Livres. Depois, preencher o forumário de cadastro da [fonte](https://dadoslivres.org/register_source) ou [aplicação](https://dadoslivres.org/register_software) que tenha escolhido.
-
+    Contribuia com o Dados Livres ajudando no cadastro de fontes de dados abertos ou aplicações cívicas. Primeiro é necessário ter um [cadastro de usuário](https://dadoslivers.org/auth/register_request) na plataforma, ou caso já tenha um cadastro, realizar o [login](https://dadoslivres.org/auth/login). Logo, preencher o forumário de cadastro da [fonte](https://dadoslivres.org/register_source) ou [aplicação](https://dadoslivres.org/register_software) que deseja cadastrar no Dados Livres.
+    
 2. **Código-fonte**
 
-    As atualizações, sugestões ou dúvidas para contribuir com o código-fonte do projeto são aceitas no [repositório do Dados Livres no GitLab](https://gitlab.com/dados-livres/dados-livres).
+    Novas funcionalidades, melhorias ou ideias de issues devem ser feitas aqui no [repositório do Dados Livres](https://gitlab.com/dados-livres/dados-livres). Confira o tópico de [como instalar](#como-instalar) o projeto.
 
-3. **Saiba mais como contribuir**
+    **Utilize o Git para contribuir com o código:**
+
+    Crie uma nova branch para a funcionalidade que irá desenvolver:
+
+    ```sh
+    git checkout -b "nome_da_branch"
+    ```
+
+    Adicione todos os arquivos criados ou editados:
+
+    ```sh
+    git add nome_do_arquivo
+    ```
+
+    Salve os arquivos:
+
+    ```sh
+    git commit -m "descreva o que editou ou criou"
+    ```
+
+    Suba todas as alterações para o GitLab:
+
+    ```sh
+    git push --set-upstream origin nome_da_branch
+    ```
+
+3. **Saiba mais sobre como contribuir**
 
     - [Página de como contribuir na plataforma](https://dadoslivres.org/how_to_contribute)
-    - [Ideias de contribuição no quadro de tópicos do GitLab](https://gitlab.com/dados-livres/dados-livres/-/boards)
+    - [Ideias de contribuição no quadro de tópicos (issues)](https://gitlab.com/dados-livres/dados-livres/-/boards)
 
 ## Como instalar
 
@@ -117,32 +140,6 @@ Acesse no seu navegador o seguinte endereço abaixo:
 
 ```sh
 http://localhost:5000/
-```
-
-### Para contribuir utilizando o Git:
-
-Crie uma nova branch para a funcionalidade que irá desenvolver:
-
-```sh
-git checkout -b "nome_da_branch"
-```
-
-Adicione todos os arquivos criados ou editados:
-
-```sh
-git add nome_do_arquivo
-```
-
-Salve os arquivos:
-
-```sh
-git commit -m "descreva o que editou ou criou"
-```
-
-Suba todas as alterações para o GitLab:
-
-```sh
-git push --set-upstream origin nome_da_branch
 ```
 
 ## Lista de autores
