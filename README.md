@@ -193,7 +193,7 @@ http://localhost:5000/
 
 ## Licença
 
-O Dados Livres é Licenciado sob Licença GPL-3.0.
+O Dados Livres é Licenciado sob [Licença GPL-3.0](https://gitlab.com/dados-livres/dados-livres/-/blob/master/LICENSE).
 
 ## Contato
 
