@@ -96,7 +96,7 @@ Crie o ambiente virtual venv:
 python3 -m venv venv
 ```
 
-Caso apareça para instalar o **python3-venv** rode o comando `sudo apt-get install python3-venv` e depois repita `python3 -m venv venv`.
+Se a sua distribuição Linux for derivada de Debian/Ubuntu e caso peça para instalar o **python3-venv** rode o comando `sudo apt-get install python3-venv` e depois repita `python3 -m venv venv`.
 
 Entre no ambiente virtual:
 
