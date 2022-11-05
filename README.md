@@ -6,11 +6,9 @@ A ideia de desenvolver a plataforma Dados Livres surgiu em 2018, como um projeto
 
 Alguns diferenciais do Dados Livres é a praticidade, pois suas fontes de dados abertos e aplicações cívicas são facilmente cadastradas na plataforma sem exigir nenhum conhecimento de código dos seus usuários. Outro diferencial é a ligação de fontes de dados abertos com as aplicações cívicas na sua página de perfil e vice-versa. Entre os planejamentos futuros do projeto é pretenso permitir cadastrar artigos científicos e notícias que utilizam de dados abertos.
 
-A plataforma foi desenvolvida com a linguagem de programação Python juntamente ao Microframework Web Flask. Além disso, o projeto utiliza as tecnologias web HTML, CSS, JavaScript e o framework Bootstrap.
+A plataforma foi desenvolvida com a linguagem de programação Python juntamente ao Microframework Web Flask. Além disso, o projeto utiliza as tecnologias web HTML, CSS, JavaScript e o framework Bootstrap. [Saiba mais sobre o Dados Livres aqui!](https://dadoslivres.org/about)
 
 **Visite o nosso site: [dadoslivres.org](https://dadoslivres.org/)**
-
-**[Saiba mais sobre o Dados Livres aqui](https://dadoslivres.org/about)**
 
 ## Sumário
 
