@@ -35,7 +35,7 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
     
 2. **Código-fonte**
 
-    Novas funcionalidades, melhorias ou ideias de issues devem ser feitas aqui no [repositório do Dados Livres](https://gitlab.com/dados-livres/dados-livres). Confira o tópico de [como instalar](#como-instalar) o projeto.
+    Novas funcionalidades, melhorias ou ideias de issues devem ser feitas aqui no [repositório do Dados Livres](https://gitlab.com/dados-livres/dados-livres). Confira o tópico de [como instalar](#como-instalar) o projeto!
 
     **Utilize o Git para contribuir com o código:**
 
@@ -73,7 +73,7 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
 Pré-requisitos:
 
 - [Git](https://git-scm.com/downloads)
-- [Python3](https://www.python.org/downloads/) (Linux já vem instalado)
+- [Python3](https://www.python.org/downloads/)
 - [Pip](https://pip.pypa.io/en/stable/installation/)
 
 Primeiro faça um fork do projeto! Em seguida clone o repositório que você fez o fork:
@@ -199,7 +199,7 @@ O Dados Livres é Licenciado sob [Licença GPL-3.0](https://gitlab.com/dados-liv
 
 Dados Livres:
 
-- Comunidade Dados Livres no Telegram: [@dadoslivres](https://t.me/dadoslivres)
+- Comunidade no Telegram: [@dadoslivres](https://t.me/dadoslivres)
 - contato@dadoslivres.org
 
 Mantedores do projeto:
