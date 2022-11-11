@@ -5,12 +5,12 @@
   <div class="row">
     <div class="col-md-12 text-justify">
       <h1 class="text-center">{{_('Sobre')}}</h1><br><br>
-      <h2>Dados Livres: plataforma livre de dados abertos</h2><br>
-      <p>O Dados Livres é uma plataforma software livre, 
-        sem fins lucrativos, que visa catalogar fontes de dados abertos 
-        e aplicações cívicas por meio de colaboração coletiva. O  
-        <a href="https://dadoslivres.org" id="color-red">dadoslivres.org</a> 
-        foi lançado em novembro de 2019 e está em sua versão beta.
+      <h2>Dados Livres</h2>
+      <h3>Plataforma livre de dados abertos</h3><br>
+      <p>O Dados Livres é uma plataforma software livre, sem fins 
+        lucrativos, que visa catalogar fontes de dados abertos e 
+        aplicações cívicas por meio de colaboração coletiva, 
+        lançado em novembro de 2019 na sua versão beta.
       </p>
     </div>
   </div><br><br>
@@ -25,11 +25,12 @@
   </div><br><br>
   <div class="row">
     <div class="col-md-12 text-justify">
+      <p>Principais tópicos:</p>
       <ul>
-        <li><p><a href="{{ url_for('main.contact') }}" id="color-red">Entre em contato conosco</a></p></li>
-        <li><p><a href="https://t.me/dadoslivres" id="color-red" target="_blank">Entre para a comunidade</a></p></li>
-        <li><p><a href="{{ url_for('main.how_to_contribute') }}" id="color-red">Contribua com o projeto</a></p></li>
-        <li><p><a href="{{ url_for('main.common_questions') }}" id="color-red">Principais perguntas frequentes</a></p></li>
+        <li><p><a href="{{ url_for('main.contact') }}" id="color-red">entre em contato conosco</a></p></li>
+        <li><p><a href="https://t.me/dadoslivres" id="color-red" target="_blank">entre para a comunidade</a></p></li>
+        <li><p><a href="{{ url_for('main.how_to_contribute') }}" id="color-red">contribua com o projeto</a></p></li>
+        <li><p><a href="{{ url_for('main.common_questions') }}" id="color-red">perguntas frequentes</a></p></li>
       </ul>
     </div>
   </div><br>
@@ -39,27 +40,21 @@
       <p>A ideia de desenvolver o Dados Livres surgiu em 2018, visando criar um 
         ambiente que facilitasse a visualização das informações e tecnologias 
         que usam os dados abertos e que, conjuntamente, virasse um lugar colaborativo. 
-        O projeto foi originalmente produzido no <a href="https://portal.ifrn.edu.br/campus/ceara-mirim/" 
-        id="color-red" target="_blank">IFRN - campus Ceará-Mirim</a>, em um projeto de pesquisa, desenvolvido pela 
+      </p>  
+      <p>O Dados Livres foi originalmente produzido no <a href="https://portal.ifrn.edu.br/" 
+        id="color-red" target="_blank">IFRN</a>, em um projeto de pesquisa, desenvolvido pela 
         <a href="https://mariacarolinass.github.io/carolinasoares/" id="color-red" target="_blank">Carolina Soares</a> 
         e orientado pelo <a href="https://www.pbaesse.net/" id="color-red" target="_blank">Pedro Baesse</a>.
-      </p><br>
-      <p><a href="{{ url_for('main.about_us_and_contributors') }}" id="color-red">
-        Saiba mais sobre quem desenvolve e colabora com o Dados Livres</a></p>
+      </p>
+      <p>Saiba mais:</p>
+      <ul>
+        <li><p><a href="{{ url_for('main.about_us_and_contributors') }}" id="color-red">
+          desenvolvedores e colaboradores</a></p></li>
+      </ul>
     </div>
   </div><br>
   <div class="row">
     <div class="col-md-12 text-justify">
-      <h3>Alguns diferenciais</h3><br>
-      <p>Um diferencial do Dados Livres é a facilidade de cadastro, pois são os 
-        próprios usuários da plataforma que cadastram as fontes de dados abertos 
-        e as aplicações cívicas, sem haver necessidade de codificação. Essas fontes 
-        e aplicações facilitam o trabalho de jornalistas, desenvolvedores e cidadãos 
-        ao simplificar a descoberta, a colaboração ou uso dos dados abertos.
-        Outro diferencial significativo, é a conexão das fontes de dados abertos 
-        com as aplicações cívicas. Ao clicar em alguma fonte cadastrada na plataforma será
-        exibido o perfil da respectiva fonte, nessa página o usuário pode saber quais
-        as aplicações cívicas foram desenvolvidas utilizando essa fonte e vice-versa.</p><br>
       <h3>Tecnologias do projeto</h3><br>
       <p>O Dados Livres usa no desenvolvido do sistema a linguagem de programação 
         <a href="https://www.python.org/" id="color-red" target="_blank">Python</a> com 
@@ -68,26 +63,31 @@
         usuário). Além disso, o projeto utiliza as tecnologias web HTML5, CSS3, JavaScript 
         e o framework Bootstrap para a construção do Front-end (parte que o usuário visualiza 
         e interage com a plataforma).</p><br>
+      <h3>Alguns diferenciais</h3><br>
+      <p>Um diferencial do Dados Livres é a facilidade de cadastro, pois são os 
+        próprios usuários da plataforma que cadastram as fontes de dados abertos 
+        e as aplicações cívicas, sem haver necessidade de codificação. Essas fontes 
+        e aplicações facilitam o trabalho de jornalistas, desenvolvedores e cidadãos 
+        ao simplificar a descoberta, a colaboração ou uso dos dados abertos. 
+        Outro diferencial significativo, é a conexão das fontes de dados abertos 
+        com as aplicações cívicas. Ao clicar em alguma fonte cadastrada na plataforma será
+        exibido o perfil da respectiva fonte, nessa página o usuário pode saber quais
+        as aplicações cívicas foram desenvolvidas utilizando essa fonte e vice-versa.
+      </p>
+      <p>É esperado que o Dados Livres possa criar um ambiente que facilite a
+        participação da população no controle social e difusão dos dados abertos
+        para os mais diversos fins.</p><br>
+      <h3>Aonde o Dados Livres esteve</h3><br>
+      <p><a href="https://ethercalc.net/pwf01es2mcrt.html" id="color-red" target="_blank">
+        Eventos que o projeto participou</a>.</p><br>
       <h3>Assista</h3><br>
-      <p>Entenda a relação dos dados abertos, controle social e Dados Livres 
-        assistindo sobre a 
-        <a href="https://youtu.be/vDrrC0i0MII?t=10883" id="color-red" target="_blank">
+      <p>Entenda a <a href="https://youtu.be/vDrrC0i0MII?t=10883" id="color-red" target="_blank">
         importância dos dados abertos governamentais e seus aplicativos resultantes</a>.</p>
       </div>
   </div><br>
   <div class="row">
-    <div class="col-md-12 col-sm-8 text-justify">
-      <h3>Aonde o Dados Livres esteve</h3><br>
-      <p><a href="https://ethercalc.net/pwf01es2mcrt.html" id="color-red" target="_blank">
-        Clique aqui para ver os eventos que o projeto participou</a></p>
-    </div>
-  </div><br>
-  <div class="row">
     <div class="col-md-12">
-      <h3>Todos juntos pelo conhecimento livre e programação cívica</h3><br>
-      <p>É esperado que o Dados Livres possa criar um ambiente que facilite a
-        participação da população no controle social e difusão dos dados abertos
-        para os mais diversos fins.</p>
+      <h3>Todos juntos pelo conhecimento livre e programação cívica</h3>
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-6 col-md-4"><br><br><br>
