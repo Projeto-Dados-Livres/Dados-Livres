@@ -8,12 +8,12 @@
       <h2>Dados Livres: plataforma livre de dados abertos</h2><br>
       <p>O Dados Livres é uma plataforma software livre, 
         sem fins lucrativos, que visa catalogar fontes de dados abertos 
-        e aplicações cívicas por meio de colaboração coletiva.</p>
-      <p>O <a href="https://dadoslivres.org" id="color-red">dadoslivres.org</a> 
+        e aplicações cívicas por meio de colaboração coletiva. O  
+        <a href="https://dadoslivres.org" id="color-red">dadoslivres.org</a> 
         foi lançado em novembro de 2019 e está em sua versão beta.
       </p>
     </div>
-  </div><br>
+  </div><br><br>
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -38,24 +38,19 @@
       <h3>Como surgiu e por quem?</h3><br>
       <p>A ideia de desenvolver o Dados Livres surgiu em 2018, visando criar um 
         ambiente que facilitasse a visualização das informações e tecnologias 
-        que usam os dados abertos e que, conjuntamente, virasse um lugar colaborativo.</p>
-      <p>O projeto foi originalmente produzido no IFRN - campus Ceará-Mirim, 
-        em um projeto de pesquisa, desenvolvido pela 
-        <a href="https://mariacarolinass.github.io/carolinasoares/" id="color-red" target="_blank">
-          Carolina Soares</a> e orientado pelo <a href="https://www.pbaesse.net/" id="color-red" target="_blank">
-          Pedro Baesse</a>.</p>
+        que usam os dados abertos e que, conjuntamente, virasse um lugar colaborativo. 
+        O projeto foi originalmente produzido no <a href="https://portal.ifrn.edu.br/campus/ceara-mirim/" 
+        id="color-red" target="_blank">IFRN - campus Ceará-Mirim</a>, em um projeto de pesquisa, desenvolvido pela 
+        <a href="https://mariacarolinass.github.io/carolinasoares/" id="color-red" target="_blank">Carolina Soares</a> 
+        e orientado pelo <a href="https://www.pbaesse.net/" id="color-red" target="_blank">Pedro Baesse</a>.
+      </p><br>
+      <p><a href="{{ url_for('main.about_us_and_contributors') }}" id="color-red">
+        Saiba mais sobre quem desenvolve e colabora com o Dados Livres</a></p>
     </div>
   </div><br>
   <div class="row">
-    <div class="col-md-12 col-sm-8 text-justify">
-      <p>
-        <a href="{{ url_for('main.about_us_and_contributors') }}" id="color-red">Saiba mais sobre nós e nossos contribuidores</a>.
-      </p>
-    </div>
-  </div>
-  <div class="row">
     <div class="col-md-12 text-justify">
-      <h3>Saiba mais</h3><br>
+      <h3>Alguns diferenciais</h3><br>
       <p>Um diferencial do Dados Livres é a facilidade de cadastro, pois são os 
         próprios usuários da plataforma que cadastram as fontes de dados abertos 
         e as aplicações cívicas, sem haver necessidade de codificação. Essas fontes 
@@ -63,11 +58,8 @@
         ao simplificar a descoberta, a colaboração ou uso dos dados abertos.
         Outro diferencial significativo, é a conexão das fontes de dados abertos 
         com as aplicações cívicas. Ao clicar em alguma fonte cadastrada na plataforma será
-        exibido o perfil da respectiva fonte, nessa página o usuário poderá saber quais
-        as aplicações cívicas foram desenvolvidas utilizando tal fonte e vice-versa.</p>
-      <p>É esperado que o Dados Livres possa criar um ambiente que facilite a
-        participação da população no controle social e difusão dos dados abertos
-        para os mais diversos fins.</p><br>
+        exibido o perfil da respectiva fonte, nessa página o usuário pode saber quais
+        as aplicações cívicas foram desenvolvidas utilizando essa fonte e vice-versa.</p><br>
       <h3>Tecnologias do projeto</h3><br>
       <p>O Dados Livres usa no desenvolvido do sistema a linguagem de programação 
         <a href="https://www.python.org/" id="color-red" target="_blank">Python</a> com 
@@ -87,113 +79,15 @@
     <div class="col-md-12 col-sm-8 text-justify">
       <h3>Aonde o Dados Livres esteve</h3><br>
       <p><a href="https://ethercalc.net/pwf01es2mcrt.html" id="color-red" target="_blank">
-        Clique aqui para ver os eventos que o projeto participou</a>.</p>
-      <!--<table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Evento</th>
-            <th scope="col">Lugar</th>
-            <th scope="col">Formato</th>
-            <th scope="col">Ano</th>
-            <th scope="col">Premiação</th>
-            <th scope="col">Site Oficial</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Campus Party Natal 2</td>
-            <td>Natal - Rio Grande do Norte (RN)</td>
-            <td>Palestra (presencial)</td>
-            <td>2019</td>
-            <td>-</td>
-            <td><a href="https://brasil.campus-party.org/" id="color-red" target="_blank">Campus Party</a></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Mostra de Ciência e Tecnologia da Zona Norte de Natal - MOCITECZN</td>
-            <td>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte (IFRN) - Campus Natal Zona Norte</td>
-            <td>Exposição (presencial)</td>
-            <td>2019</td>
-            <td>3° lugar na área de ciências sociais e credenciamento para a
-              Mostra Científica de Inovação, Tecnologia e Engenharia - MOCITEPIAL (Arapiraca, Alagoas)</td>
-            <td><a href="https://doity.com.br/mociteczn" id="color-red" target="_blank">MOCITECZN</a></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Primeiro encontro de computação do sertão - SertãoComp</td>
-            <td>Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (IFPB) - Campus Cajazeiras</td>
-            <td>Apresentação de Artigo (online)</td>
-            <td>2020</td>
-            <td>Publicação no 
-              <a href="http://editora.ifpb.edu.br/index.php/ifpb/catalog/book/407" id="color-red" target="_blank">
-              "Anais do SertãoComp"</a> pág. 32</td>
-            <td><a href="http://sertaocomp.info/" id="color-red" target="_blank">SertãoComp</a></td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Sprint: Dados Livres - Python Brasil</td>
-            <td>Brasil</td>
-            <td>Reunião (online)</td>
-            <td>2020</td>
-            <td>-</td>
-            <td><a href="https://2020.pythonbrasil.org.br/" id="color-red" target="_blank">Python Brasil</a></td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>8ª Mostra Tecnológica do IFRN</td>
-            <td>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte (IFRN)</td>
-            <td>Exposição (online)</td>
-            <td>2020</td>
-            <td>-</td>
-            <td><a href="https://eventos.ifrn.edu.br/8mostratecnologica/" id="color-red" target="_blank">
-              Mostra Tecnológica</a></td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>Feira Brasileira de Ciências e Engenharia - FEBRACE</td>
-            <td>Universidade de São Paulo (USP)</td>
-            <td>Exposição (online)</td>
-            <td>2021</td>
-            <td>Publicação <a href="https://issuu.com/febrace/docs/anais_febrace2021_v4/255" id="color-red" target="_blank">
-              Anais FEBRACE</a></td>
-            <td><a href="https://febrace.org.br/" id="color-red" target="_blank">FEBRACE</a></td>
-          </tr>
-          <tr>
-            <th scope="row">7</th>
-            <td>Python Nordeste</td>
-            <td>Nordeste, Brasil</td>
-            <td>Palestra (online)</td>
-            <td>2021</td>
-            <td>-</td>
-            <td><a href="https://2020.pythonnordeste.org/" id="color-red" target="_blank">PYNE</a></td>
-          </tr>
-          <tr>
-            <th scope="row">8</th>
-            <td>Muvuca Hack Festival</td>
-            <td>Matehackers</td>
-            <td>Palestra (online)</td>
-            <td>2021</td>
-            <td>-</td>
-            <td><a href="https://muvuca.matehackers.org/" id="color-red" target="_blank">Muvuca</a></td>
-          </tr>
-          <tr>
-            <th scope="row">9</th>
-            <td>FLISol Natal</td>
-            <td>Sebrae, Natal (RN)</td>
-            <td>Palestra (presencial)</td>
-            <td>2022</td>
-            <td>-</td>
-            <td><a href="https://flisol.potilivre.org/" id="color-red" target="_blank">FliSol</a></td>
-          </tr>
-        </tbody>
-      </table>-->
+        Clique aqui para ver os eventos que o projeto participou</a></p>
     </div>
   </div><br>
   <div class="row">
     <div class="col-md-12">
-      <h3>Todos juntos pelo conhecimento livre e programação cívica!</h3>
+      <h3>Todos juntos pelo conhecimento livre e programação cívica</h3><br>
+      <p>É esperado que o Dados Livres possa criar um ambiente que facilite a
+        participação da população no controle social e difusão dos dados abertos
+        para os mais diversos fins.</p>
     </div>
     <div class="col-md-2"></div>
     <div class="col-sm-6 col-md-4"><br><br><br>
