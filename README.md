@@ -152,19 +152,7 @@ pip install -r requirements.txt
 
 ### Configurando o projeto
 
-Crie o banco de dados:
-
-```sh
-flask db init
-```
-
-Salve a versão criada do banco de dados:
-
-```sh
-flask db migrate -m "subindo banco de dados"
-```
-
-Atualize o banco de dados:
+Configure o banco de dados local:
 
 ```sh
 flask db upgrade
