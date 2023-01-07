@@ -167,6 +167,7 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(200), index=True)
+    slug = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
     software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
