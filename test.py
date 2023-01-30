@@ -8,8 +8,7 @@ class TestConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
 
-
-class UserModelCase(unittest.TestCase):
+class BaseTest(unittest.TestCase):
     def setUp(self):
         self.app = create_app(TestConfig)
         self.app_context = self.app.app_context()
@@ -21,6 +20,25 @@ class UserModelCase(unittest.TestCase):
         db.drop_all()
         self.app_context.pop()
 
+
+class TestSourceModel(BaseTest):
+    def test_as_dict(self):
+        source = Source(title='Title')
+        received = source.as_dict()
+        expected = {
+            'title': 'Title',
+            'sphere': None,
+            'city': None,
+            'state': None,
+            'country': None,
+            'description': None,
+            'official_link': None,
+            'treatedLink': None
+        }
+        self.assertEqual(received, expected)
+
+
+class UserModelCase(BaseTest):
     def test_password_hashing(self):
         u = User(username='susan')
         u.set_password('cat')
