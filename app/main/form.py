@@ -59,8 +59,8 @@ class SourceForm(FlaskForm):
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial da fonte: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da fonte oficial (https://www.exemplo.com/)"})
-    treatedLink = StringField(_l('Link da fonte tratada:'),
-        render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
+    #treatedLink = StringField(_l('Link da fonte tratada:'),
+    #    render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
         Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a fonte de dados abertos"})
     sphere = SelectField(_l('Esfera: *'), choices=[
@@ -100,8 +100,8 @@ class EditSourceForm(FlaskForm):
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da fonte oficial(https://www.exemplo.com/)"})
-    treatedLink = StringField(_l('Link da fonte tratada:'),
-        render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
+    #treatedLink = StringField(_l('Link da fonte tratada:'),
+    #    render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
         Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a fonte de dados abertos"})
     sphere = SelectField(_l('Esfera: *'), choices=[

@@ -90,7 +90,7 @@ class Source(db.Model):
     country = db.Column(db.String(200), index=True)
     description = db.Column(db.String(800), index=True)
     officialLink = db.Column(db.String(300), index=True)
-    treatedLink = db.Column(db.String(300), index=True)
+    #treatedLink = db.Column(db.String(300), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     similar = db.relationship('Software', secondary=similar,
         backref=db.backref('source_similar', lazy='dynamic'))
@@ -113,7 +113,7 @@ class Source(db.Model):
             'country': self.state,
             'description': self.description,
             'official_link': self.officialLink,
-            'treatedLink': self.treatedLink
+            #'treatedLink': self.treatedLink
         }
 
 
@@ -167,7 +167,7 @@ class Category(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     category = db.Column(db.String(200), index=True)
-    slug = db.Column(db.String(200), index=True)
+    #slug = db.Column(db.String(200), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     source_id = db.Column(db.Integer, db.ForeignKey('source.id'))
     software_id = db.Column(db.Integer, db.ForeignKey('software.id'))
