@@ -50,12 +50,14 @@ class SourceForm(FlaskForm):
     keyword = StringField(_l('Palavras-chave: *'), id="tag", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chave"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
-        choices=[('Selecione','Selecione uma categoria'), ('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
-        ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
-        ('Tecnologia', 'Tecnologia'), ('Ciência', 'Ciência'),
-        ('Segurança Pública', 'Segurança Pública'), ('Meio Ambiente', 'Meio Ambiente'),
-        ('Cultura', 'Cultura'), ('Geografia', 'Geografia'), ('Finanças', 'Finanças'),
-        ('Gastos Públicos', 'Gastos Públicos'), ('Clima', 'Clima'), ('Esporte e Lazer', 'Esporte e Lazer')],
+        choices=[('Selecione','Selecione uma categoria'), ('Cinema', 'Cinema'), 
+                 ('Ciência e Tecnologia', 'Ciência e Tecnologia'), ('Clima', 'Clima'), 
+                 ('Cultura', 'Cultura'), ('Covid-19','Covid-19'), ('Educação', 'Educação'),
+                 ('Economia e Finanças', 'Economia e Finanças'), ('Estatística', 'Estatística'),
+                 ('Esporte e Lazer', 'Esporte e Lazer'), ('Geografia', 'Geografia'), 
+                 ('Meio Ambiente', 'Meio Ambiente'), ('Petróleo e Gás', 'Petróleo e Gás'), 
+                 ('Saúde', 'Saúde'), ('Segurança Pública', 'Segurança Pública'), 
+                 ('Transporte', 'Transporte')],
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial da fonte: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da fonte oficial (https://www.exemplo.com/)"})
@@ -91,12 +93,14 @@ class EditSourceForm(FlaskForm):
     keyword = StringField(_l('Palavras-chave: *'), id="tag", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chave da fonte"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
-        choices=[('Selecione','Selecione uma categoria'), ('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
-        ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
-        ('Tecnologia', 'Tecnologia'), ('Ciência', 'Ciência'),
-        ('Segurança Pública', 'Segurança Pública'), ('Meio Ambiente', 'Meio Ambiente'),
-        ('Cultura', 'Cultura'), ('Geografia', 'Geografia'), ('Finanças', 'Finanças'),
-        ('Gastos Públicos', 'Gastos Públicos'), ('Clima', 'Clima'), ('Esporte e Lazer', 'Esporte e Lazer')],
+        choices=[('Selecione','Selecione uma categoria'), ('Cinema', 'Cinema'), 
+                 ('Ciência e Tecnologia', 'Ciência e Tecnologia'), ('Clima', 'Clima'), 
+                 ('Cultura', 'Cultura'), ('Covid-19','Covid-19'), ('Educação', 'Educação'),
+                 ('Economia e Finanças', 'Economia e Finanças'), ('Estatística', 'Estatística'),
+                 ('Esporte e Lazer', 'Esporte e Lazer'), ('Geografia', 'Geografia'), 
+                 ('Meio Ambiente', 'Meio Ambiente'), ('Petróleo e Gás', 'Petróleo e Gás'), 
+                 ('Saúde', 'Saúde'), ('Segurança Pública', 'Segurança Pública'), 
+                 ('Transporte', 'Transporte')], 
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da fonte oficial(https://www.exemplo.com/)"})
@@ -133,12 +137,14 @@ class SoftwareForm(FlaskForm):
     keyword = StringField(_l('Palavras-chave: *'), id="tag", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chave da aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
-        choices=[('Selecione','Selecione uma categoria'), ('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
-        ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
-        ('Tecnologia', 'Tecnologia'), ('Ciência', 'Ciência'),
-        ('Segurança Pública', 'Segurança Pública'), ('Meio Ambiente', 'Meio Ambiente'),
-        ('Cultura', 'Cultura'), ('Geografia', 'Geografia'), ('Finanças', 'Finanças'),
-        ('Gastos Públicos', 'Gastos Públicos'), ('Clima', 'Clima'), ('Esporte e Lazer', 'Esporte e Lazer')],
+        choices=[('Selecione','Selecione uma categoria'), ('Cinema', 'Cinema'), 
+                 ('Ciência e Tecnologia', 'Ciência e Tecnologia'), ('Clima', 'Clima'), 
+                 ('Cultura', 'Cultura'), ('Covid-19','Covid-19'), ('Educação', 'Educação'),
+                 ('Economia e Finanças', 'Economia e Finanças'), ('Estatística', 'Estatística'),
+                 ('Esporte e Lazer', 'Esporte e Lazer'), ('Geografia', 'Geografia'), 
+                 ('Meio Ambiente', 'Meio Ambiente'), ('Petróleo e Gás', 'Petróleo e Gás'), 
+                 ('Saúde', 'Saúde'), ('Segurança Pública', 'Segurança Pública'), 
+                 ('Transporte', 'Transporte')],
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da aplicação (https://www.exemplo.com/)"})
@@ -177,12 +183,14 @@ class EditSoftwareForm(FlaskForm):
     keyword = StringField(_l('Palavras-chave: *'), id="tag", validators=[DataRequired()],
         render_kw={"placeholder": "Digite as palavras-chave da aplicação"})
     category = SelectField(_l('Categoria: *'), validators=[DataRequired()],
-        choices=[('Selecione','Selecione uma categoria'), ('Corona Vírus','Corona Vírus'), ('Saúde', 'Saúde'),
-        ('Educação', 'Educação'), ('Cinema', 'Cinema'), ('Música', 'Música'),
-        ('Tecnologia', 'Tecnologia'), ('Ciência', 'Ciência'),
-        ('Segurança Pública', 'Segurança Pública'), ('Meio Ambiente', 'Meio Ambiente'),
-        ('Cultura', 'Cultura'), ('Geografia', 'Geografia'), ('Finanças', 'Finanças'),
-        ('Gastos Públicos', 'Gastos Públicos'), ('Clima', 'Clima'), ('Esporte e Lazer', 'Esporte e Lazer')],
+        choices=[('Selecione','Selecione uma categoria'), ('Cinema', 'Cinema'), 
+                 ('Ciência e Tecnologia', 'Ciência e Tecnologia'), ('Clima', 'Clima'), 
+                 ('Cultura', 'Cultura'), ('Covid-19','Covid-19'), ('Educação', 'Educação'),
+                 ('Economia e Finanças', 'Economia e Finanças'), ('Estatística', 'Estatística'),
+                 ('Esporte e Lazer', 'Esporte e Lazer'), ('Geografia', 'Geografia'), 
+                 ('Meio Ambiente', 'Meio Ambiente'), ('Petróleo e Gás', 'Petróleo e Gás'), 
+                 ('Saúde', 'Saúde'), ('Segurança Pública', 'Segurança Pública'), 
+                 ('Transporte', 'Transporte')],
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da aplicação (https://www.exemplo.com/)"})
