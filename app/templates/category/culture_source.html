@@ -2,10 +2,6 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
 <h1 class="text-center">{{ _('Cultura - Fontes') }}</h1><br>
-<h4 class="text-center">Não encontrou a fonte que procurava ou ainda
-  não existe nenhuma fonte cadastrada nesta categoria?
-  <a href="{{ url_for('main.register_source') }}" id="color-red">
-    Cadastre agora clicando aqui!</a></h4><br><br>
 <div class="row">
   <div class="col-md-12">
     {% for source in sources %}
