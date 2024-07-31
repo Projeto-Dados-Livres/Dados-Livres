@@ -1,21 +1,15 @@
 #!/usr/bin/env python# -*- coding: utf-8 -*-
-import sys
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g, \
-    jsonify, current_app, Response
-import json
+from flask import render_template, flash, redirect, url_for, request, g, jsonify
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import db
-from app.main.form import EditProfileForm, EditPasswordForm, \
-    SourceForm, EditSourceForm, SoftwareForm, EditSoftwareForm, \
-    SimilarTitlesForm, CommentForm, ReportForm, ContactForm
-from app.models import User, Source, Software, Tag, Category, \
-    Comment, Report
+from app.main.form import EditProfileForm, EditPasswordForm, SourceForm, \
+    EditSourceForm, SoftwareForm, EditSoftwareForm, SearchForm, SimilarTitlesForm
+from app.models import User, Source, Software, Tag, Category
 from sqlalchemy import func, desc
-from flask_mail import Message
-from app import mail
 from app.main import bp
+from app.util.models import Query
 
 @bp.before_request
 def before_request():
@@ -24,34 +18,29 @@ def before_request():
         db.session.commit()
     g.locale = str(get_locale())
 
-@bp.route('/_similar', methods=['GET'])
-def similar():
-    source_title = Source.query.all()
-    software_title = Software.query.all()
-    sources = [r.as_dict() for r in source_title]
-    softwares = [r.as_dict() for r in software_title]
-    return jsonify(sources + softwares)
-
-@bp.route('/_tag', methods=['GET'])
-def tag():
-    keyword = Tag.query.all()
-    tags = [r.as_dict() for r in keyword]
-    return jsonify(tags)
-
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
 def index():
     page = request.args.get('page', 1, type=int)
-    sources = db.session.query(Source.title, Source.sphere,
-        Category.category, Tag.keyword).filter(
-        Category.source_id == Source.id, Source.tags).order_by(
-        Source.timestamp.desc()).paginate(page=page, per_page=4)
-    softwares = db.session.query(Software.title, Software.owner,
-        Software.license, Category.category, Tag.keyword).filter(
-        Category.software_id == Software.id, Software.tags).order_by(
-        Software.timestamp.desc()).paginate(page=page, per_page=4)
-    return render_template('index.html', title=(_('Página Inicial')),
-        sources=sources.items, softwares=softwares.items)
+    sources = db.session.query(Source.title, Source.sphere, Category.category, Tag.keyword).filter(
+        Category.source_id == Source.id, Source.tags).order_by(Source.timestamp.desc()).paginate(page=page, per_page=4)
+    softwares = db.session.query(Software.title, Software.owner, Software.license, Category.category, Tag.keyword).filter(
+        Category.software_id == Software.id, Software.tags).order_by(Software.timestamp.desc()).paginate(page=page, per_page=4)
+    form = SearchForm()
+    if form.validate_on_submit():
+        search_term = form.search.data
+        return redirect(url_for('main.search', title=search_term))
+    return render_template('index.html', title=_('Página Inicial'), sources=sources.items, softwares=softwares.items, form=form)
+
+@bp.route('/search/<title>', methods=['GET', 'POST'])
+def search(title):
+    page = request.args.get('page', 1, type=int)
+    source_results = Query.search_paginate(Source, title, page)
+    software_results = Query.search_paginate(Software, title, page)
+    if not source_results.items and not software_results.items:
+        flash(_('Nenhum resultado encontrado para "%s"' % title))
+        return redirect(url_for('main.index'))
+    return render_template('search.html', title=_('Busca'), source_results=source_results, software_results=software_results)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/source', methods=['GET', 'POST'])
@@ -71,7 +60,7 @@ def register_source():
         state=form.state.data, country=form.country.data,
         description=form.description.data, sphere=form.sphere.data,
         officialLink=form.officialLink.data, 
-        #treatedLink=form.treatedLink.data, 
+        treatedLink=form.treatedLink.data, 
         author=current_user)
         db.session.add(source)
         db.session.flush()
@@ -115,11 +104,11 @@ def edit_source(id):
         Category.source_id == Source.id, Source.id == id).first_or_404()
     form = EditSourceForm()
     if form.validate_on_submit():
-        source.title = form.title.data
+        source.title = Source.title
         tag.keyword = form.keyword.data
         category.category = form.category.data
         source.officialLink = form.officialLink.data
-        #source.treatedLink = form.treatedLink.data
+        source.treatedLink = form.treatedLink.data
         source.sphere = form.sphere.data
         source.city = form.city.data
         source.state = form.state.data
@@ -138,7 +127,7 @@ def edit_source(id):
     form.keyword.data = tag.keyword
     form.category.data = category.category
     form.officialLink.data = source.officialLink
-    #form.treatedLink.data = source.treatedLink
+    form.treatedLink.data = source.treatedLink
     form.sphere.data = source.sphere
     form.city.data = source.city
     form.state.data = source.state
@@ -201,7 +190,7 @@ def edit_software(id):
         Category.software_id == Software.id, Software.id == id).first_or_404()
     form = EditSoftwareForm()
     if form.validate_on_submit():
-        #software.title = form.title.data
+        software.title = Software.title
         tag.keyword = form.keyword.data
         category.category = form.category.data
         software.officialLink = form.officialLink.data
@@ -242,6 +231,20 @@ def deletar_software(id):
     db.session.commit()
     flash(_('A aplicação "%s" foi apagada com sucesso.' % software.title))
     return redirect(url_for("main.index"))
+
+@bp.route('/_similar', methods=['GET'])
+def similar():
+    source_title = Source.query.all()
+    software_title = Software.query.all()
+    sources = [r.as_dict() for r in source_title]
+    softwares = [r.as_dict() for r in software_title]
+    return jsonify(sources + softwares)
+
+@bp.route('/_tag', methods=['GET'])
+def tag():
+    keyword = Tag.query.all()
+    tags = [r.as_dict() for r in keyword]
+    return jsonify(tags)
 
 @bp.route('/user/<nickname>', methods=['GET', 'POST'])
 def user(nickname):
@@ -299,7 +302,6 @@ def edit_password():
 
 @bp.route('/about', methods=['GET', 'POST'])
 def about():
-    #collaborating_user = User.query.filter_by(nickname='fernando-ms').first_or_404()
     return render_template('about.html', title=(_('Sobre')))
 
 @bp.route('/how_to_contribute', methods=['GET', 'POST'])
@@ -307,6 +309,10 @@ def how_to_contribute():
     return render_template('how_to_contribute.html', title=(_('Como contribuir')))
 
 @bp.route('/contact', methods=['GET', 'POST'])
+def contact():
+    return render_template('contact.html', title=(_('Contato')))
+
+"""@bp.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = ContactForm()
     while current_user.is_authenticated:
@@ -317,11 +323,8 @@ def contact():
         if request.method == 'POST':
             msg = Message(form.username.data, sender='dadoslivres.testes@gmail.com',
             recipients=['m.carolina.soares1@gmail.com'])
-            msg.body = """
-            Enviado por: %s
-            E-mail: %s
-            Assunto: %s
-            Mensagem: %s""" % (form.username.data, form.email.data, form.subject.data, form.message.data)
+            msg.body = "Enviado por: %s E-mail: %s Assunto: %s Mensagem: %s" % 
+            (form.username.data, form.email.data, form.subject.data, form.message.data)
             mail.send(msg)
             flash(_('Seu e-mail foi enviado, agradecemos pelo contato'))
             return render_template('contact.html', title=(_('Contato')), form=form)
@@ -331,16 +334,13 @@ def contact():
     if request.method == 'POST':
         msg = Message(form.username.data, sender='dadoslivres.testes@gmail.com',
         recipients=['m.carolina.soares1@gmail.com'])
-        msg.body = """
-        Enviado por: %s
-        E-mail: %s
-        Assunto: %s
-        Mensagem: %s""" % (form.username.data, form.email.data, form.subject.data, form.message.data)
+        msg.body = "Enviado por: %s E-mail: %s Assunto: %s Mensagem: %s" % 
+        (form.username.data, form.email.data, form.subject.data, form.message.data)
         mail.send(msg)
         flash(_('Seu e-mail foi enviado, agradecemos pelo contato'))
         return render_template('contact.html', title=(_('Contato')), form=form)
     elif request.method == 'GET':
-        return render_template('contact.html', title=(_('Contato')), form=form)
+        return render_template('contact.html', title=(_('Contato')), form=form)"""
 
 @bp.route('/ranking', methods=['GET', 'POST'])
 def ranking():
