@@ -12,6 +12,7 @@
 	
 	<div class="row">
 		<h2 class="text-center">{{_('Encontre as principais categorias de fontes de dados abertos')}}</h2><br>
+		<div class="col-md-12">{{ wtf.quick_form(form) }}<br><br></div>
 		<div class="col-sm-4 col-md-4">
 			<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.cinema_source') }}" id="category-link">{{_('Cinema')}}</a></h4>
 			<h4 class="text-center"><a class="topic-grid-item" href="{{ url_for('category.culture_source') }}" id="category-link">{{_('Cultura')}}</a></h4>
