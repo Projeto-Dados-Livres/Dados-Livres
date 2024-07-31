@@ -1,6 +1,6 @@
 server {
 	
-	server_name my_domain www.my_domain;
+	server_name dadoslivres dadoslivres.org;
 
 	location / {
 		
