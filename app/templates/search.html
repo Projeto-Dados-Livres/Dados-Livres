@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+<h1 class="text-center">{{ _('Resultados da Pesquisa') }}</h1><br>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Fontes Encontradas</h2><br>
+    {% for source in source_results.items %}
+      <hr>{% include '_source.html' %}<hr><br>
+    {% endfor%}
+    <h2>Aplicações Encontradas</h2><br>
+    {% for software in software_results.items %}
+      <hr>{% include '_software.html' %}<hr><br>
+    {% endfor%}
+  </div>
+</div><br><br>
+{% endblock %}
