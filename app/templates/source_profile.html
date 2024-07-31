@@ -12,17 +12,19 @@
         <p>{{_('Estado')}}: {{source.state}}</p>{% endif %}{% if source.city %}
         <p>{{_('Município')}}: {{source.city}}</p>{% endif %}
         <p>{{_('Palavras-Chaves')}}: {% for tag in source.tags %}{{ tag }}</p>
-        {% endfor %}<p>{% if source.description %}{{ source.description }}</p>{% endif %}<br>
+        {% endfor %}<p>{% if source.description %}{{ source.description }}</p><br>{% endif %}
+        {% if source.treatedLink %}<p><a href="{{ source.treatedLink }}" id="color-red">{{_('Link da fonte tratada')}}</a><p><br>{% endif %}
+        <h4><a href="{{ source.officialLink }}" id="buttonPerfil">{{_('Visitar página oficial')}}</a><h4><br>
         {% if source.user_id == current_user.id %}
-          <p><a href="{{ url_for('main.edit_source', id=source.id) }}" id="color-red">{{_('Editar fonte')}}</a> |
-            <a href="{{ url_for('main.deletar_source', id=source.id) }}" id="color-red">{{_('Apagar fonte')}}</a></p>
+          <br><p><a href="{{ url_for('main.edit_source', id=source.id) }}" id="color-red">{{_('Editar fonte')}}</a> |
+            <a href="{{ url_for('main.deletar_source', id=source.id) }}" id="color-red">{{_('Apagar fonte')}}</a></p><br>
         {% endif %}
-        <br><h4><a href="{{ source.officialLink }}" id="buttonPerfil">{{_('Visitar página oficial')}}</a><h4><br>
         <h4><hr>{{_('Fonte registrada por')}}:
           <a href="{{ url_for('main.user', nickname=source.author.nickname ) }}" id="color-red">
             @{{ source.author.nickname }}</a><hr></h4><br>
     </div>
   </div>
+  
 <!--
   <div class="row">
     <div class="col-md-12">
