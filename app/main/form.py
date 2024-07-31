@@ -1,15 +1,10 @@
 #!/usr/bin/env python -*- coding: utf-8 -*-
-from flask import request
-from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, SelectField, TextField, TextAreaField, \
-    DateField, PasswordField, RadioField, BooleanField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, Length, \
-    Email, EqualTo
+from flask_wtf import FlaskForm
+from wtforms import StringField, SelectField, TextAreaField, PasswordField, SubmitField
+from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo
 from app.util.validators import Unique
-from datetime import datetime
 from flask_babel import _, lazy_gettext as _l
-from app.models import User, Source, Software, Tag, Category, \
-    Comment, Report
+from app.models import User, Source, Software
 
 
 class EditProfileForm(FlaskForm):
@@ -61,8 +56,8 @@ class SourceForm(FlaskForm):
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial da fonte: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da fonte oficial (https://www.exemplo.com/)"})
-    #treatedLink = StringField(_l('Link da fonte tratada:'),
-    #    render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
+    treatedLink = StringField(_l('Link da fonte tratada:'),
+        render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
         Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a fonte de dados abertos"})
     sphere = SelectField(_l('Esfera: *'), choices=[
@@ -104,8 +99,8 @@ class EditSourceForm(FlaskForm):
         description='Sugira uma nova categoria em https://t.me/dadoslivres.')
     officialLink = StringField(_l('Link oficial: *'), validators=[DataRequired()],
         render_kw={"placeholder": "Digite a URL da fonte oficial(https://www.exemplo.com/)"})
-    #treatedLink = StringField(_l('Link da fonte tratada:'),
-    #    render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
+    treatedLink = StringField(_l('Link da fonte tratada:'),
+        render_kw={"placeholder": "Digite a URL da fonte tratada (https://www.exemplo.com/)"})
     description = TextAreaField(_l('Descrição: *'), validators=[DataRequired(),
         Length(max=550)], render_kw={"rows": 6, "placeholder": "Digite uma breve descrição sobre a fonte de dados abertos"})
     sphere = SelectField(_l('Esfera: *'), choices=[
@@ -220,6 +215,12 @@ class EditSoftwareForm(FlaskForm):
     def validate_license(self, license):
         if license.data == "Selecione":
             raise ValidationError(_('Por favor, selecione uma licença válida.'))
+
+
+class SearchForm(FlaskForm):
+    search = StringField('', validators=[DataRequired()], render_kw={
+        "placeholder": "Digite o título de uma fonte ou aplicação"})
+    submit = SubmitField(_l('Buscar'))
 
 
 class SimilarTitlesForm(FlaskForm):
