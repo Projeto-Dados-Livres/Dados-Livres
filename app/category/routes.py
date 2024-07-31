@@ -1,5 +1,5 @@
 #!/usr/bin/env python -*- coding: utf-8 -*-
-from flask import render_template
+from flask import render_template, abort
 from flask_babel import _
 from app import db
 from app.category import bp
@@ -7,18 +7,20 @@ from app.models import Source, Software, Tag, Category
 
 def fetch_and_render(template, category, model, model_id_attr):
     if model == Source:
-        items = db.session.query(
+        sources = db.session.query(
             model.title, model.sphere, Category.category, Tag.keyword).filter(
                 Category.category == category, getattr(
                 Category, model_id_attr) == model.id, model.tags).order_by(
                     model.timestamp.desc()).all()
+        return render_template(template, title=_(category), sources=sources)
     elif model == Software:
-        items = db.session.query(
+        softwares = db.session.query(
             model.title, model.owner, model.license, Category.category, 
             Tag.keyword).filter(Category.category == category,
             getattr(Category, model_id_attr) == model.id, model.tags).order_by(
             model.timestamp.desc()).all()
-    return render_template(template, title=_(category), items=items)
+        return render_template(template, title=_(category), softwares=softwares)
+    return abort(404)
  
 @bp.route('/covid19_source', methods=['GET', 'POST'])
 def covid19_source():
