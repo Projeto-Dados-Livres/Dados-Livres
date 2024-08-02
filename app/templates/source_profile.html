@@ -22,31 +22,15 @@
         <h4><hr>{{_('Fonte registrada por')}}:
           <a href="{{ url_for('main.user', nickname=source.author.nickname ) }}" id="color-red">
             @{{ source.author.nickname }}</a><hr></h4><br>
-    </div>
-  </div>
-  
-<!--
-  <div class="row">
+    </div><br>
     <div class="col-md-12">
-      <h2>Fontes semelhantes</h2><br>
-      {% for source in similar %}
-  			<h4><a href="{{ url_for('main.source_profile', title=source.title) }}" id="color-red">
-  			{{ source.title }}</a></h4><p>{{_('Categoria')}}: {{ source.category }}</p><br>
-  		{% endfor%}<br>
-    </div>
+      <h2>Fontes que você pode gostar</h2><br>
+      {% for similar_source in similar_sources.items %}
+        <p><a href="{{ url_for('main.source_profile', title=similar_source.title) }}">{{ similar_source.title }}</a></p>
+      {% endfor %}
+    </div><br>
     <div class="col-md-12">
-      <h2>Aplicações que utilizam dessa fonte</h2><br>
-      <p>Título da Aplicação</p>
-      <p>Título da Aplicação</p>
-      <p>Título da Aplicação</p><br><br>
-      <h4>Adicione uma aplicação que faz uso da fonte no formulário abaixo:</h4><br>
-        {{ wtf.quick_form(form) }}<br><br>
-    </div>
-    <div class="col-md-12">
-      <p><a href="{{ url_for('main.register_software') }}" id="color-red">
-        {{ _('Cadastre uma nova aplicação') }}</a>.
-      </p>
+      <h2>Aplicações que usam a fonte</h2>
     </div>
   </div><br><br>
--->
 {% endblock %}

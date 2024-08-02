@@ -20,29 +20,16 @@
       <br><h4><a href="{{ software.officialLink }}" id="buttonPerfil">{{_('Visitar página oficial')}}</a><h4><br>
       <h4><hr>{{_('Aplicação registrada por')}}:
         <a href="{{ url_for('main.user', nickname=software.author.nickname ) }}" id="color-red">
-          @{{ software.author.nickname }}</a><hr></h4>
-    </div>
-  </div><br>
-<!--
-  <div class="row">
+          @{{ software.author.nickname }}</a><hr></h4><br>
+    </div><br>
     <div class="col-md-12">
-      <h2>Fontes e aplicações semelhantes</h2><br>
-      <p>Título</p>
-      <p>Categoria</p><hr>
-      <p>Título</p>
-      <p>Categoria</p><hr><br><br><br>
+      <h2>Aplicações que você pode gostar</h2><br>
+      {% for similar_software in similar_softwares.items %}
+        <p><a href="{{ url_for('main.software_profile', title=similar_software.title) }}">{{ similar_software.title }}</a></p>
+  		{% endfor%}<br>
     </div>
     <div class="col-md-12">
-      <h4>Cadastre um novo semelhante digitando o título da fonte ou aplicação
-        no formulário abaixo:</h4><br>
-        {{ wtf.quick_form(form) }}<br><br><br>
-    </div>
-    <div class="col-md-12">
-      <p>O seu título semelhante precisa está cadastrado na plataforma.<br> Para isso clique em
-        <a href="{{ url_for('main.register_source') }}" id="color-red">{{ _('nova fonte') }}</a> ou em
-        <a href="{{ url_for('main.register_software') }}" id="color-red">{{ _('nova aplicação') }}</a>.
-      </p>
+      <h2>Fontes usadas na aplicação</h2>
     </div>
   </div><br><br>
--->
 {% endblock %}
