@@ -24,11 +24,11 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h4>{{_('Fontes registradas por')}} {{ user.username }}:</h4>
+      <h2>{{_('Fontes registradas por')}} {{ user.username }}:</h2>
       {% for source in sources %}
         <hr>{% include '_source.html' %}<hr>
       {% endfor %}<br><br>
-      <h4>{{_('Aplicações registradas por')}} {{ user.username }}:</h4>
+      <h2>{{_('Aplicações registradas por')}} {{ user.username }}:</h2>
       {% for software in softwares %}
         <hr>{% include '_software.html' %}<hr>
       {% endfor %}
