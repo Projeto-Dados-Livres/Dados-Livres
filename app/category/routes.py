@@ -7,18 +7,14 @@ from app.models import Source, Software, Tag, Category
 
 def fetch_and_render(template, category, model, model_id_attr):
     if model == Source:
-        sources = db.session.query(
-            model.title, model.sphere, Category.category, Tag.keyword).filter(
-                Category.category == category, getattr(
-                Category, model_id_attr) == model.id, model.tags).order_by(
+        sources = db.session.query(model.title, model.sphere, Category.category, Tag.keyword).filter(
+            Category.category == category, getattr(Category, model_id_attr) == model.id, model.tags).order_by(
                     model.timestamp.desc()).all()
         return render_template(template, title=_(category), sources=sources)
     elif model == Software:
-        softwares = db.session.query(
-            model.title, model.owner, model.license, Category.category, 
-            Tag.keyword).filter(Category.category == category,
-            getattr(Category, model_id_attr) == model.id, model.tags).order_by(
-            model.timestamp.desc()).all()
+        softwares = db.session.query(model.title, model.owner, model.license, Category.category, Tag.keyword).filter(
+            Category.category == category, getattr(Category, model_id_attr) == model.id, model.tags).order_by(
+                model.timestamp.desc()).all()
         return render_template(template, title=_(category), softwares=softwares)
     return abort(404)
  
