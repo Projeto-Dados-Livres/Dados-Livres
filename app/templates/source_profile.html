@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
-
   <div class="row">
     <div class="col-md-12">
       <h1>{% if source.title %}{{ source.title }}{% endif %}</h1><br>
@@ -26,11 +25,13 @@
     <div class="col-md-12">
       <h2>Fontes que você pode gostar</h2><br>
       {% for similar_source in similar_sources.items %}
-        <p><a href="{{ url_for('main.source_profile', title=similar_source.title) }}">{{ similar_source.title }}</a></p>
-      {% endfor %}
-    </div><br>
-    <div class="col-md-12">
-      <h2>Aplicações que usam a fonte</h2>
+        <p><a href="{{ url_for('main.source_profile', title=similar_source.title) }}" id="color-red">{{ similar_source.title }}</a>
+        <p>Categoria: {{ similar_source.category }}</p><br>
+      {% else %}
+        <p>Nenhuma fonte relacionada encontrada.</p>
+      {% endfor %}<br>
+      <h2>Aplicações que usam a fonte</h2><br>
+      <p>Ainda não existem aplicações para essa fonte.</p>
     </div>
   </div><br><br>
 {% endblock %}

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block app_content %}
-
   <div class="row">
     <div class="col-md-12">
       <h1>{% if software.title %}{{ software.title }}{% endif %}</h1><br>
@@ -25,11 +24,13 @@
     <div class="col-md-12">
       <h2>Aplicações que você pode gostar</h2><br>
       {% for similar_software in similar_softwares.items %}
-        <p><a href="{{ url_for('main.software_profile', title=similar_software.title) }}">{{ similar_software.title }}</a></p>
-  		{% endfor%}<br>
-    </div>
-    <div class="col-md-12">
-      <h2>Fontes usadas na aplicação</h2>
+        <p><a href="{{ url_for('main.software_profile', title=similar_software.title) }}" id="color-red">{{ similar_software.title }}</a>
+        <p>Categoria: {{ similar_software.category }}</p><br>
+      {% else %}
+        <p>Nenhum software relacionado encontrado.</p>
+      {% endfor %}<br><br>
+      <h2>Fontes usadas na aplicação</h2><br>
+      <p>Ainda não existem fontes para essa aplicação.</p>
     </div>
   </div><br><br>
 {% endblock %}
