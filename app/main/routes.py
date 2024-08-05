@@ -8,6 +8,7 @@ from app.main.form import EditProfileForm, EditPasswordForm, SourceForm, \
     EditSourceForm, SoftwareForm, EditSoftwareForm, SearchForm, SimilarTitlesForm
 from app.models import User, Source, Software, Tag, Category
 from sqlalchemy import func, desc
+from sqlalchemy.orm import aliased
 from app.main import bp
 from app.util.models import Query
 
@@ -23,14 +24,17 @@ def before_request():
 def index():
     page = request.args.get('page', 1, type=int)
     sources = db.session.query(Source.title, Source.sphere, Category.category, Tag.keyword).filter(
-        Category.source_id == Source.id, Source.tags).order_by(Source.timestamp.desc()).paginate(page=page, per_page=4)
+            Category.source_id == Source.id, Source.tags).order_by(Source.timestamp.desc()).paginate(
+                page=page, per_page=4, error_out=False)
     softwares = db.session.query(Software.title, Software.owner, Software.license, Category.category, Tag.keyword).filter(
-        Category.software_id == Software.id, Software.tags).order_by(Software.timestamp.desc()).paginate(page=page, per_page=4)
+            Category.software_id == Software.id, Software.tags).order_by(Software.timestamp.desc()).paginate(
+                page=page, per_page=4, error_out=False)
     form = SearchForm()
     if form.validate_on_submit():
         search_term = form.search.data
         return redirect(url_for('main.search', title=search_term))
-    return render_template('index.html', title=_('Página Inicial'), sources=sources.items, softwares=softwares.items, form=form)
+    return render_template('index.html', title=_('Página Inicial'), sources=sources.items, 
+                           softwares=softwares.items, form=form)
 
 @bp.route('/search/<title>', methods=['GET', 'POST'])
 def search(title):
@@ -40,7 +44,8 @@ def search(title):
     if not source_results.items and not software_results.items:
         flash(_('Nenhum resultado encontrado para "%s"' % title))
         return redirect(url_for('main.index'))
-    return render_template('search.html', title=_('Busca'), source_results=source_results, software_results=software_results)
+    return render_template('search.html', title=_('Busca'), source_results=source_results, 
+                           software_results=software_results)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/source', methods=['GET', 'POST'])
@@ -81,19 +86,15 @@ def register_source():
 def source_profile(title):
     source = Source.query.filter_by(title=title).first_or_404()
     page = request.args.get('page', 1, type=int)
-    similar = db.session.query(Source.title, Category.category).filter(
-        Category.source_id == Source.id, Category.category == Category.category).order_by(
-        Source.timestamp.desc()).paginate(page=page, per_page=3)
-    form = SimilarTitlesForm()
-    if form.validate_on_submit():
-        if current_user.is_anonymous:
-            return redirect(url_for('auth.login'))
-        software = Software(title=form.title.data)
-        software.similar.append(software)
-        db.session.add(software)
-        db.session.commit()
-    return render_template('source_profile.html', title=(_('Perfil da Fonte')),
-        source=source, similar=similar.items, form=form)
+    subquery = db.session.query(Category.category).filter(
+        Category.source_id == source.id).subquery()
+    SourceAlias = aliased(Source)
+    similar_sources = db.session.query(SourceAlias.title, Category.category).filter(
+        Category.source_id == SourceAlias.id, Category.category.in_(subquery), 
+        SourceAlias.id != source.id).order_by(SourceAlias.timestamp.desc()).paginate(
+            page=page, per_page=3, error_out=False)
+    return render_template('source_profile.html', title=(_('Perfil da Fonte')), 
+                           source=source, similar_sources=similar_sources)
 
 @bp.route('/edit_source/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -176,10 +177,17 @@ def register_software():
 
 @bp.route('/software_profile/<title>', methods=['GET', 'POST'])
 def software_profile(title):
-    form = SimilarTitlesForm()
     software = Software.query.filter_by(title=title).first_or_404()
-    return render_template('software_profile.html',
-        title=(_('Perfil da Aplicação')), software=software, form=form)
+    page = request.args.get('page', 1, type=int)
+    subquery = db.session.query(Category.category).filter(
+        Category.software_id == software.id).subquery()
+    SoftwareAlias = aliased(Software)
+    similar_softwares = db.session.query(SoftwareAlias.title, Category.category).filter(
+        Category.software_id == SoftwareAlias.id, Category.category.in_(subquery), 
+        SoftwareAlias.id != software.id).order_by(SoftwareAlias.timestamp.desc()).paginate(
+            page=page, per_page=3, error_out=False)
+    return render_template('software_profile.html', title=(_('Perfil da Aplicação')), 
+                           software=software, similar_softwares=similar_softwares)
 
 @bp.route('/edit_software/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -249,14 +257,17 @@ def tag():
 @bp.route('/user/<nickname>', methods=['GET', 'POST'])
 def user(nickname):
     user = User.query.filter_by(nickname=nickname).first_or_404()
+    page = request.args.get('page', 1, type=int)
     sources = db.session.query(Source.title, Source.sphere,
         Category.category, Tag.keyword).filter(
         Category.source_id == Source.id, Source.tags,
-        Source.user_id == user.id).order_by(Source.timestamp.desc()).all()
+        Source.user_id == user.id).order_by(Source.timestamp.desc()).paginate(
+            page=page, per_page=4, error_out=False)
     softwares = db.session.query(Software.title, Software.owner,
         Software.license, Category.category, Tag.keyword).filter(
         Category.software_id == Software.id, Software.tags,
-        Software.user_id == user.id).order_by(Software.timestamp.desc()).all()
+        Software.user_id == user.id).order_by(Software.timestamp.desc()).paginate(
+            page=page, per_page=4, error_out=False)
     return render_template('user.html', title=(_('Perfil do Usuário')),
         user=user, sources=sources, softwares=softwares)
 
@@ -367,4 +378,5 @@ def privacy_policy():
 
 @bp.route('/about_us_and_contributors', methods=['GET', 'POST'])
 def about_us_and_contributors():
-    return render_template('about_us_and_contributors.html', title=(_('Saiba mais sobre nós e nossos contribuidores')))
+    return render_template('about_us_and_contributors.html', 
+                           title=(_('Saiba mais sobre nós e nossos contribuidores')))
