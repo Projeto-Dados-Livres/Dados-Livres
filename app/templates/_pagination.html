@@ -1,0 +1,13 @@
+{# _macros.html #}
+{% macro render_pagination(next_url, prev_url) %}
+
+<p>
+    {% if prev_url %}
+        <a href="{{ prev_url }}" id="color-red">Voltar</a> | 
+    {% endif %}
+    {% if next_url %}
+        <a href="{{ next_url }}" id="color-red">Avançar</a>
+    {% endif %}
+</p>
+
+{% endmacro %}
