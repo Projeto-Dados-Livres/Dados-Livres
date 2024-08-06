@@ -11,6 +11,7 @@ from sqlalchemy import func, desc
 from sqlalchemy.orm import aliased
 from app.main import bp
 from app.util.models import Query
+from app.util.pagination import Page
 
 @bp.before_request
 def before_request():
@@ -29,23 +30,36 @@ def index():
     softwares = db.session.query(Software.title, Software.owner, Software.license, Category.category, Tag.keyword).filter(
             Category.software_id == Software.id, Software.tags).order_by(Software.timestamp.desc()).paginate(
                 page=page, per_page=4, error_out=False)
+    
     form = SearchForm()
     if form.validate_on_submit():
         search_term = form.search.data
         return redirect(url_for('main.search', title=search_term))
+    
     return render_template('index.html', title=_('Página Inicial'), sources=sources.items, 
                            softwares=softwares.items, form=form)
 
 @bp.route('/search/<title>', methods=['GET', 'POST'])
 def search(title):
-    page = request.args.get('page', 1, type=int)
-    source_results = Query.search_paginate(Source, title, page)
-    software_results = Query.search_paginate(Software, title, page)
+    sources_page = request.args.get('sources_page', 1, type=int)
+    softwares_page = request.args.get('softwares_page', 1, type=int)
+    
+    source_results = Query.search_paginate(Source, title, sources_page)
+    software_results = Query.search_paginate(Software, title, softwares_page)
+    
     if not source_results.items and not software_results.items:
         flash(_('Nenhum resultado encontrado para "%s"' % title))
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.search'))
+    
+    sources_next_url, sources_prev_url = Page.pagination_urls_sources(
+        sources_page, 'main.search', source_results, title=title)
+    softwares_next_url, softwares_prev_url = Page.pagination_urls_softwares(
+        softwares_page, 'main.search', software_results, title=title)
+    
     return render_template('search.html', title=_('Busca'), source_results=source_results, 
-                           software_results=software_results)
+                           software_results=software_results, sources_next_url=sources_next_url, 
+                           sources_prev_url=sources_prev_url, softwares_next_url=softwares_next_url, 
+                           softwares_prev_url=softwares_prev_url)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/source', methods=['GET', 'POST'])
@@ -85,16 +99,22 @@ def register_source():
 @bp.route('/source_profile/<title>', methods=['GET', 'POST'])
 def source_profile(title):
     source = Source.query.filter_by(title=title).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    subquery = db.session.query(Category.category).filter(
-        Category.source_id == source.id).subquery()
+    sources_page = request.args.get('sources_page', 1, type=int)
+    
+    subquery = db.session.query(Category.category).filter(Category.source_id == source.id).subquery()
     SourceAlias = aliased(Source)
+    
     similar_sources = db.session.query(SourceAlias.title, Category.category).filter(
         Category.source_id == SourceAlias.id, Category.category.in_(subquery), 
         SourceAlias.id != source.id).order_by(SourceAlias.timestamp.desc()).paginate(
-            page=page, per_page=3, error_out=False)
-    return render_template('source_profile.html', title=(_('Perfil da Fonte')), 
-                           source=source, similar_sources=similar_sources)
+            page=sources_page, per_page=4, error_out=False)
+    
+    sources_next_url, sources_prev_url = Page.pagination_urls_sources(
+        sources_page, 'main.source_profile', similar_sources, title=title)
+    
+    return render_template('source_profile.html', title=(_('Perfil da Fonte')), source=source, 
+                           similar_sources=similar_sources, sources_next_url=sources_next_url, 
+                           sources_prev_url=sources_prev_url)
 
 @bp.route('/edit_source/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -178,16 +198,22 @@ def register_software():
 @bp.route('/software_profile/<title>', methods=['GET', 'POST'])
 def software_profile(title):
     software = Software.query.filter_by(title=title).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    subquery = db.session.query(Category.category).filter(
-        Category.software_id == software.id).subquery()
+    softwares_page = request.args.get('softwares_page', 1, type=int)
+    
+    subquery = db.session.query(Category.category).filter(Category.software_id == software.id).subquery()
     SoftwareAlias = aliased(Software)
+    
     similar_softwares = db.session.query(SoftwareAlias.title, Category.category).filter(
         Category.software_id == SoftwareAlias.id, Category.category.in_(subquery), 
         SoftwareAlias.id != software.id).order_by(SoftwareAlias.timestamp.desc()).paginate(
-            page=page, per_page=3, error_out=False)
-    return render_template('software_profile.html', title=(_('Perfil da Aplicação')), 
-                           software=software, similar_softwares=similar_softwares)
+            page=softwares_page, per_page=4, error_out=False)
+    
+    softwares_next_url, softwares_prev_url = Page.pagination_urls_softwares(
+        softwares_page, 'main.software_profile', similar_softwares, title=title)
+    
+    return render_template('software_profile.html', title=(_('Perfil da Aplicação')), software=software, 
+                           similar_softwares=similar_softwares, softwares_next_url=softwares_next_url, 
+                           softwares_prev_url=softwares_prev_url)
 
 @bp.route('/edit_software/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -257,19 +283,22 @@ def tag():
 @bp.route('/user/<nickname>', methods=['GET', 'POST'])
 def user(nickname):
     user = User.query.filter_by(nickname=nickname).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    sources = db.session.query(Source.title, Source.sphere,
-        Category.category, Tag.keyword).filter(
-        Category.source_id == Source.id, Source.tags,
-        Source.user_id == user.id).order_by(Source.timestamp.desc()).paginate(
-            page=page, per_page=4, error_out=False)
-    softwares = db.session.query(Software.title, Software.owner,
-        Software.license, Category.category, Tag.keyword).filter(
-        Category.software_id == Software.id, Software.tags,
-        Software.user_id == user.id).order_by(Software.timestamp.desc()).paginate(
-            page=page, per_page=4, error_out=False)
-    return render_template('user.html', title=(_('Perfil do Usuário')),
-        user=user, sources=sources, softwares=softwares)
+    sources_page = request.args.get('sources_page', 1, type=int)
+    softwares_page = request.args.get('softwares_page', 1, type=int)
+    
+    sources = db.session.query(Source.title, Source.sphere, Category.category, Tag.keyword).filter(
+        Category.source_id == Source.id, Source.tags, Source.user_id == user.id).order_by(
+            Source.timestamp.desc()).paginate(page=sources_page, per_page=4, error_out=False)
+    softwares = db.session.query(Software.title, Software.owner, Software.license, Category.category, Tag.keyword).filter(
+        Category.software_id == Software.id, Software.tags, Software.user_id == user.id).order_by(
+            Software.timestamp.desc()).paginate(page=softwares_page, per_page=4, error_out=False)
+    
+    sources_next_url, sources_prev_url = Page.pagination_urls_sources(sources_page, 'main.user', sources, nickname=nickname)
+    softwares_next_url, softwares_prev_url = Page.pagination_urls_softwares(softwares_page, 'main.user', softwares, nickname=nickname)
+    
+    return render_template('user.html', title=_('Perfil do Usuário'), user=user, sources=sources, softwares=softwares, 
+                           sources_next_url=sources_next_url, sources_prev_url=sources_prev_url, 
+                           softwares_next_url=softwares_next_url, softwares_prev_url=softwares_prev_url)
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
