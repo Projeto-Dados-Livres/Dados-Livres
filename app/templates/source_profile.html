@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
+{% import '_pagination.html' as macros %}
+
 {% block app_content %}
   <div class="row">
     <div class="col-md-12">
@@ -29,7 +31,8 @@
         <p>Categoria: {{ similar_source.category }}</p><br>
       {% else %}
         <p>Nenhuma fonte relacionada encontrada.</p>
-      {% endfor %}<br>
+      {% endfor %}
+      {{ macros.render_pagination(sources_next_url, sources_prev_url) }}<br>
       <h2>Aplicações que usam a fonte</h2><br>
       <p>Ainda não existem aplicações para essa fonte.</p>
     </div>

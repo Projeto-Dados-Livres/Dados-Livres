@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
+{% import '_pagination.html' as macros %}
+
 {% block app_content %}
   <div class="row">
     <div class="col-md-12">
@@ -28,7 +30,8 @@
         <p>Categoria: {{ similar_software.category }}</p><br>
       {% else %}
         <p>Nenhum software relacionado encontrado.</p>
-      {% endfor %}<br><br>
+      {% endfor %}
+      {{ macros.render_pagination(softwares_next_url, softwares_prev_url) }}<br>
       <h2>Fontes usadas na aplicação</h2><br>
       <p>Ainda não existem fontes para essa aplicação.</p>
     </div>
