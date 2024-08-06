@@ -127,7 +127,7 @@ class Software(db.Model):
     owner = db.Column(db.String(200), index=True)
     dateCreation = db.Column(db.String(200), index=True, default=datetime.utcnow)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    similar = db.relationship('Software', secondary=similar,
+    similar = db.relationship('Source', secondary=similar,
         backref=db.backref('software_similar', lazy='dynamic'))
     tags = db.relationship('Tag', secondary=tags,
         backref=db.backref('software_tag', lazy='dynamic'))
