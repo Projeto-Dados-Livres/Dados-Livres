@@ -5,7 +5,8 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import db
 from app.main.form import EditProfileForm, EditPasswordForm, SourceForm, \
-    EditSourceForm, SoftwareForm, EditSoftwareForm, SearchForm, SimilarTitlesForm
+    EditSourceForm, SoftwareForm, EditSoftwareForm, SearchForm, \
+    SourceTitlesForm, SoftwareTitlesForm
 from app.models import User, Source, Software, Tag, Category
 from sqlalchemy import func, desc
 from sqlalchemy.orm import aliased
@@ -19,6 +20,24 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
     g.locale = str(get_locale())
+
+@bp.route('/_similar_sources', methods=['GET'])
+def similar_sources():
+    source_title = Source.query.all()
+    sources = [r.as_dict() for r in source_title]
+    return jsonify(sources)
+
+@bp.route('/_similar_softwares', methods=['GET'])
+def similar_softwares():
+    software_title = Software.query.all()
+    softwares = [r.as_dict() for r in software_title]
+    return jsonify(softwares)
+
+@bp.route('/_tag', methods=['GET'])
+def tag():
+    keyword = Tag.query.all()
+    tags = [r.as_dict() for r in keyword]
+    return jsonify(tags)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/index', methods=['GET', 'POST'])
@@ -112,9 +131,28 @@ def source_profile(title):
     sources_next_url, sources_prev_url = Page.pagination_urls_sources(
         sources_page, 'main.source_profile', similar_sources, title=title)
     
+    form = SoftwareTitlesForm()
+    if form.validate_on_submit():
+        if current_user.is_anonymous:
+            return redirect(url_for('auth.login'))
+        
+        title_software = Software.query.filter_by(title=form.title.data).first()
+        if title_software:
+            if title_software not in source.similar:
+                source.similar.append(title_software)
+                db.session.add(title_software)
+                db.session.commit()
+                flash(_('A aplicação "%s" foi adicionada à fonte com sucesso.' % title_software.title))
+            else:
+                flash(_('A aplicação "%s" já está associada à fonte.' % title_software.title))
+        else:
+            flash(_('A aplicação "%s" não foi encontrada.' % form.title.data))
+    
+    softwares = source.similar
+    
     return render_template('source_profile.html', title=(_('Perfil da Fonte')), source=source, 
                            similar_sources=similar_sources, sources_next_url=sources_next_url, 
-                           sources_prev_url=sources_prev_url)
+                           sources_prev_url=sources_prev_url, form=form, softwares=softwares)
 
 @bp.route('/edit_source/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -211,9 +249,28 @@ def software_profile(title):
     softwares_next_url, softwares_prev_url = Page.pagination_urls_softwares(
         softwares_page, 'main.software_profile', similar_softwares, title=title)
     
+    form = SourceTitlesForm()
+    if form.validate_on_submit():
+        if current_user.is_anonymous:
+            return redirect(url_for('auth.login'))
+        
+        title_source = Source.query.filter_by(title=form.title.data).first()
+        if title_source:
+            if title_source not in software.similar:
+                software.similar.append(title_source)
+                db.session.add(title_source)
+                db.session.commit()
+                flash(_('A fonte "%s" foi adicionada à aplicação com sucesso.' % title_source.title))
+            else:
+                flash(_('A fonte "%s" já está associada à aplicação.' % title_source.title))
+        else:
+            flash(_('A fonte "%s" não foi encontrada.' % form.title.data))
+    
+    sources = software.similar
+    
     return render_template('software_profile.html', title=(_('Perfil da Aplicação')), software=software, 
                            similar_softwares=similar_softwares, softwares_next_url=softwares_next_url, 
-                           softwares_prev_url=softwares_prev_url)
+                           softwares_prev_url=softwares_prev_url, form=form, sources=sources)
 
 @bp.route('/edit_software/<int:id>', methods=['GET', 'POST'])
 @login_required
@@ -265,20 +322,6 @@ def deletar_software(id):
     db.session.commit()
     flash(_('A aplicação "%s" foi apagada com sucesso.' % software.title))
     return redirect(url_for("main.index"))
-
-@bp.route('/_similar', methods=['GET'])
-def similar():
-    source_title = Source.query.all()
-    software_title = Software.query.all()
-    sources = [r.as_dict() for r in source_title]
-    softwares = [r.as_dict() for r in software_title]
-    return jsonify(sources + softwares)
-
-@bp.route('/_tag', methods=['GET'])
-def tag():
-    keyword = Tag.query.all()
-    tags = [r.as_dict() for r in keyword]
-    return jsonify(tags)
 
 @bp.route('/user/<nickname>', methods=['GET', 'POST'])
 def user(nickname):
