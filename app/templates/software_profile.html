@@ -33,7 +33,13 @@
       {% endfor %}
       {{ macros.render_pagination(softwares_next_url, softwares_prev_url) }}<br>
       <h2>Fontes usadas na aplicação</h2><br>
-      <p>Ainda não existem fontes para essa aplicação.</p>
+      {% for source in sources %}
+        <p><a href="{{ url_for('main.source_profile', title=source.title) }}" id="color-red">{{ source.title }}</a></p>
+      {% else %}
+        <p>Ainda não existem aplicações para essa fonte.</p>
+      {% endfor %}
+      <br><hr><p>Indique uma fonte que usa essa aplicação:</p>
+      <p>{{ wtf.quick_form(form) }}</p><hr>
     </div>
   </div><br><br>
 {% endblock %}
