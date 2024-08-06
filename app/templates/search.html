@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import '_pagination.html' as macros %}
+
+{% block app_content %}
+  <h1 class="text-center">{{ _('Resultados da Pesquisa') }}</h1><br>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Fontes</h2><br>
+      {% for source in source_results.items %}
+        <hr>{% include '_source.html' %}<hr><br>
+      {% else %}
+        <p>Nenhuma fonte encontrada.</p>
+      {% endfor%}
+      {{ macros.render_pagination(sources_next_url, sources_prev_url) }}<br>
+      <h2>Aplicações</h2><br>
+      {% for software in software_results.items %}
+        <hr>{% include '_software.html' %}<hr><br>
+      {% else %}
+        <p>Nenhuma aplicação encontrada.</p>
+      {% endfor%}
+      {{ macros.render_pagination(softwares_next_url, softwares_prev_url) }}
+    </div>
+  </div><br><br>
+{% endblock %}

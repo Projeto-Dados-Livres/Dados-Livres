@@ -90,7 +90,7 @@ class Source(db.Model):
     country = db.Column(db.String(200), index=True)
     description = db.Column(db.String(800), index=True)
     officialLink = db.Column(db.String(300), index=True)
-    #treatedLink = db.Column(db.String(300), index=True)
+    treatedLink = db.Column(db.String(300), index=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     similar = db.relationship('Software', secondary=similar,
         backref=db.backref('source_similar', lazy='dynamic'))
@@ -112,8 +112,8 @@ class Source(db.Model):
             'state': self.state,
             'country': self.state,
             'description': self.description,
-            'official_link': self.officialLink,
-            #'treatedLink': self.treatedLink
+            'officiallink': self.officialLink,
+            'treatedLink': self.treatedLink
         }
 
 
@@ -127,7 +127,7 @@ class Software(db.Model):
     owner = db.Column(db.String(200), index=True)
     dateCreation = db.Column(db.String(200), index=True, default=datetime.utcnow)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    similar = db.relationship('Software', secondary=similar,
+    similar = db.relationship('Source', secondary=similar,
         backref=db.backref('software_similar', lazy='dynamic'))
     tags = db.relationship('Tag', secondary=tags,
         backref=db.backref('software_tag', lazy='dynamic'))
@@ -143,10 +143,10 @@ class Software(db.Model):
         return {
             'title': self.title,
             'description': self.description,
-            'official_link': self.officialLink,
+            'officiallink': self.officialLink,
             'license': self.license,
             'owner': self.owner,
-            'date_creation': self.dateCreation
+            'datecreation': self.dateCreation
         }
 
 

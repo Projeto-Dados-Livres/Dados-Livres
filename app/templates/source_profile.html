@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% block app_content %}
+{% import '_pagination.html' as macros %}
 
+{% block app_content %}
   <div class="row">
     <div class="col-md-12">
       <h1>{% if source.title %}{{ source.title }}{% endif %}</h1><br>
@@ -12,39 +13,34 @@
         <p>{{_('Estado')}}: {{source.state}}</p>{% endif %}{% if source.city %}
         <p>{{_('Município')}}: {{source.city}}</p>{% endif %}
         <p>{{_('Palavras-Chaves')}}: {% for tag in source.tags %}{{ tag }}</p>
-        {% endfor %}<p>{% if source.description %}{{ source.description }}</p>{% endif %}<br>
+        {% endfor %}<p>{% if source.description %}{{ source.description }}</p><br>{% endif %}
+        {% if source.treatedLink %}<p><a href="{{ source.treatedLink }}" id="color-red">{{_('Link da fonte tratada')}}</a><p><br>{% endif %}
+        <h4><a href="{{ source.officialLink }}" id="buttonPerfil">{{_('Visitar página oficial')}}</a><h4><br>
         {% if source.user_id == current_user.id %}
-          <p><a href="{{ url_for('main.edit_source', id=source.id) }}" id="color-red">{{_('Editar fonte')}}</a> |
-            <a href="{{ url_for('main.deletar_source', id=source.id) }}" id="color-red">{{_('Apagar fonte')}}</a></p>
+          <br><p><a href="{{ url_for('main.edit_source', id=source.id) }}" id="color-red">{{_('Editar fonte')}}</a> |
+            <a href="{{ url_for('main.deletar_source', id=source.id) }}" id="color-red">{{_('Apagar fonte')}}</a></p><br>
         {% endif %}
-        <br><h4><a href="{{ source.officialLink }}" id="buttonPerfil">{{_('Visitar página oficial')}}</a><h4><br>
         <h4><hr>{{_('Fonte registrada por')}}:
           <a href="{{ url_for('main.user', nickname=source.author.nickname ) }}" id="color-red">
             @{{ source.author.nickname }}</a><hr></h4><br>
-    </div>
-  </div>
-<!--
-  <div class="row">
+    </div><br>
     <div class="col-md-12">
-      <h2>Fontes semelhantes</h2><br>
-      {% for source in similar %}
-  			<h4><a href="{{ url_for('main.source_profile', title=source.title) }}" id="color-red">
-  			{{ source.title }}</a></h4><p>{{_('Categoria')}}: {{ source.category }}</p><br>
-  		{% endfor%}<br>
-    </div>
-    <div class="col-md-12">
-      <h2>Aplicações que utilizam dessa fonte</h2><br>
-      <p>Título da Aplicação</p>
-      <p>Título da Aplicação</p>
-      <p>Título da Aplicação</p><br><br>
-      <h4>Adicione uma aplicação que faz uso da fonte no formulário abaixo:</h4><br>
-        {{ wtf.quick_form(form) }}<br><br>
-    </div>
-    <div class="col-md-12">
-      <p><a href="{{ url_for('main.register_software') }}" id="color-red">
-        {{ _('Cadastre uma nova aplicação') }}</a>.
-      </p>
+      <h2>Fontes que você pode gostar</h2><br>
+      {% for similar_source in similar_sources.items %}
+        <p><a href="{{ url_for('main.source_profile', title=similar_source.title) }}" id="color-red">{{ similar_source.title }}</a>
+        <p>Categoria: {{ similar_source.category }}</p><br>
+      {% else %}
+        <p>Nenhuma fonte relacionada encontrada.</p>
+      {% endfor %}
+      {{ macros.render_pagination(sources_next_url, sources_prev_url) }}<br>
+      <h2>Aplicações que usam a fonte</h2><br>
+      {% for software in softwares %}
+        <p><a href="{{ url_for('main.software_profile', title=software.title) }}" id="color-red">{{ software.title }}</a></p><br>
+      {% else %}
+        <p>Ainda não existem aplicações para essa fonte.</p>
+      {% endfor %}
+      <br><hr><p>Indique uma aplicação que usa essa fonte:</p>
+      <p>{{ wtf.quick_form(form) }}</p><hr>
     </div>
   </div><br><br>
--->
 {% endblock %}

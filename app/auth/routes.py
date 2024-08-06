@@ -1,9 +1,8 @@
 #!/usr/bin/env python -*- coding: utf-8 -*-
-from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g
-from flask_login import logout_user, current_user, login_user, login_required
+from flask_login import logout_user, current_user, login_user
 from werkzeug.urls import url_parse
-from flask_babel import _, get_locale
+from flask_babel import _
 from app import db
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm, \

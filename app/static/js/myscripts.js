@@ -30,7 +30,7 @@ $(document).ready(function () {
   ];
 
   function loadTitles() {
-    $.getJSON('/_similar', function (data, status, xhr) {
+    $.getJSON('/_similar_sources', function (data, status, xhr) {
       for (var i = 0; i < data.length; i++) {
         titles.push(data[i].title);
       }
@@ -39,7 +39,28 @@ $(document).ready(function () {
 
   loadTitles();
 
-  $('#similar').autocomplete({
+  $('#similar_sources').autocomplete({
+    source: titles
+  });
+});
+
+
+$(document).ready(function () {
+  var titles = [
+
+  ];
+
+  function loadTitles() {
+    $.getJSON('/_similar_softwares', function (data, status, xhr) {
+      for (var i = 0; i < data.length; i++) {
+        titles.push(data[i].title);
+      }
+    });
+  };
+
+  loadTitles();
+
+  $('#similar_softwares').autocomplete({
     source: titles
   });
 });
