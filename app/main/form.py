@@ -223,12 +223,18 @@ class SearchForm(FlaskForm):
     submit = SubmitField(_l('Buscar'))
 
 
-class SimilarTitlesForm(FlaskForm):
-    title = StringField(_l('Título: *'), id='similar', validators=[DataRequired()],
-        render_kw={"placeholder": "Digite um título já cadastrado"})
+class SourceTitlesForm(FlaskForm):
+    title = StringField('', id='similar_sources', validators=[DataRequired()],
+        render_kw={"placeholder": "Digite um título de uma fonte já cadastrada"})
     submit = SubmitField(_l('Enviar'))
 
 
+class SoftwareTitlesForm(FlaskForm):
+    title = StringField('', id='similar_softwares', validators=[DataRequired()],
+        render_kw={"placeholder": "Digite um título de uma aplicação já cadastrada"})
+    submit = SubmitField(_l('Enviar'))
+    
+    
 class CommentForm(FlaskForm):
     username = StringField(_l('Nome: *'), validators=[DataRequired()])
     text = TextAreaField(_l('Comentário: *'), validators=[DataRequired()])
