@@ -8,7 +8,7 @@ from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm, \
     ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User
-from app.auth.email import send_password_reset_email, send_register_confirm_email
+from app.auth.email import send_password_reset_email
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -38,31 +38,8 @@ def register_request():
         user.set_password(form.senha.data)
         db.session.add(user)
         db.session.commit()
-        if user:
-            send_register_confirm_email(user)
-        flash(_('Verifique sua caixa de e-mail para concluir a sua inscrição.'))
         return redirect(url_for('auth.login'))
     return render_template('auth/register_request.html', title=(_('Inscreva-se')), form=form)
-
-@bp.route('/register_confirm/<token>', methods=['GET', 'POST'])
-def register_confirm(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('main.index'))
-    try:
-        email = User.verify_confirm_register_token(token)
-        if not email:
-            return redirect(url_for('main.index'))
-    except:
-        flash(_('O link de confirmação é inválido ou expirou'))
-    user = db.session.query(User).filter(User.id).first_or_404()
-    if user.confirmed:
-        flash(_('Conta já confirmada. Por favor entre.'))
-    else:
-        user.confirmed = True
-        db.session.add(user)
-        db.session.commit()
-        flash(_('Parabéns, sua inscrição foi confirmada com sucesso.'))
-    return redirect(url_for('auth.login'))
 
 @bp.route('/logout')
 def logout():
