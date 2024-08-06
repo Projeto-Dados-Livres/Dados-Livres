@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% block app_content %}
+{% import '_pagination.html' as macros %}
 
+{% block app_content %}
   <div class="row">
     <div class="col-md-12">
       <figure><img src="{{ user.avatar(100) }}" id="imagem_user" alt="foto de perfil do usuário"></figure>
@@ -25,14 +26,19 @@
   <div class="row">
     <div class="col-md-12">
       <h2>{{_('Fontes registradas por')}} {{ user.username }}:</h2>
-      {% for source in sources %}
+      {% for source in sources.items %}
         <hr>{% include '_source.html' %}<hr>
-      {% endfor %}<br><br>
-      <h2>{{_('Aplicações registradas por')}} {{ user.username }}:</h2>
-      {% for software in softwares %}
-        <hr>{% include '_software.html' %}<hr>
+      {% else %}
+        <p>Você ainda não cadastrou nenhuma fonte</p>
       {% endfor %}
+      {{ macros.render_pagination(sources_next_url, sources_prev_url) }}<br>
+      <h2>{{_('Aplicações registradas por')}} {{ user.username }}:</h2>
+      {% for software in softwares.items %}
+        <hr>{% include '_software.html' %}<hr>
+      {% else %}
+        <p>Você ainda não cadastrou nenhuma aplicação</p>
+      {% endfor %}
+      {{ macros.render_pagination(softwares_next_url, softwares_prev_url) }}
     </div>
   </div><br><br>
-  
 {% endblock %}
