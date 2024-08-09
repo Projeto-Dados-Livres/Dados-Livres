@@ -68,7 +68,7 @@ def search(title):
     
     if not source_results.items and not software_results.items:
         flash(_('Nenhum resultado encontrado para "%s"' % title))
-        return redirect(url_for('main.search'))
+        return redirect(url_for('main.index'))
     
     sources_next_url, sources_prev_url = Page.pagination_urls_sources(
         sources_page, 'main.search', source_results, title=title)
