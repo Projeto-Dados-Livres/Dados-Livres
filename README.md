@@ -186,11 +186,10 @@ O Dados Livres é Licenciado sob [Licença GPL-3.0](https://gitlab.com/dados-liv
 Dados Livres:
 
 - Comunidade no Telegram: [@dadoslivres](https://t.me/dadoslivres)
-- contato@dadoslivres.org
 
 Mantedores do projeto:
 
-- Telegram: [@carols0](https://t.me/carols0) | m.carolina.soares1@gmail.com
+- Telegram: [@carolsoaresm](https://t.me/carolsoaresm) | mcarolinasoares0@gmail.com
 - Telegram: [@pbaesse](https://t.me/pbaesse) | pbaesse@gmail.com
 
 ## Redes sociais
