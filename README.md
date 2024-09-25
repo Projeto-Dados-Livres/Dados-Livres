@@ -20,6 +20,7 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
     * [Bibliotecas do projeto](#bibliotecas-do-projeto)
     * [Configurando o projeto](#configurando-o-projeto)
     * [Rodando o projeto](#rodando-o-projeto)
+    * [Rodando com Docker Compose](#rodando-com-docker-compose)
 * [Lista de autores](#lista-de-autores)
 * [Licença](#licença)
 * [Contato](#contato)
@@ -170,6 +171,30 @@ Acesse no seu navegador o seguinte endereço abaixo:
 
 ```sh
 http://localhost:5000/
+```
+
+### Rodando com Docker Compose
+
+Pré-requisitos:
+
+- [Docker e docker compose plugin](https://docs.docker.com/engine/install/)
+
+Com o docker compose instalado e funcionando, entre na pasta do projeto e rode:
+
+```sh
+docker compose up -d
+```
+
+Acesse o endereço da aplicação no navegador:
+
+```sh
+http://localhost:5000
+```
+
+Se quiser ver os logs da aplicação:
+
+```sh
+docker compose logs --follow #Para encerrar o log, use o atalho CTRL+C
 ```
 
 ## Lista de autores
