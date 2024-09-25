@@ -175,7 +175,7 @@ http://localhost:5000/
 ## Lista de autores
 
 - [Carolina Soares](https://mariacarolinass.github.io/carolinasoares/)
-- [Pedro Baesse](https://www.pbaesse.net/)
+- [Pedro Baesse](https://pbaesse.me/)
 
 ## Licença
 
