@@ -61,7 +61,7 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
     ```sh
     git push --set-upstream origin nome_da_branch
     ```
-    Se quiser subir as ões para o github:
+    Se quiser subir as alterações para o github:
    ```sh
     git push origin nome_da_branch
     ```
