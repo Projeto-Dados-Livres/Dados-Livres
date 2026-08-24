@@ -61,8 +61,12 @@ A plataforma foi desenvolvida com a linguagem de programação Python juntamente
     ```sh
     git push --set-upstream origin nome_da_branch
     ```
+    Se quiser subir as ões para o github:
+   ```sh
+    git push origin nome_da_branch
+    ```
 
-3. **Saiba mais sobre como contribuir**
+4. **Saiba mais sobre como contribuir**
 
     - [Página de como contribuir na plataforma](https://dadoslivres.org/how_to_contribute)
     - [Ideias de contribuição no quadro de tópicos (issues)](https://gitlab.com/dados-livres/dados-livres/-/boards)
