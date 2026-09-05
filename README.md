@@ -82,7 +82,7 @@ Pré-requisitos:
 Primeiro faça um fork do projeto! Em seguida clone o repositório que você fez o fork:
 
 ```sh
-git clone https://gitlab.com/seu-usuario/dados-livres
+git clone [https://gitlab.com/seu-usuario/dados-livres](https://github.com/Projeto-Dados-Livres/Dados-Livres](https://github.com/Projeto-Dados-Livres/Dados-Livres.git)
 ```
 
 Para entrar no repositório:
